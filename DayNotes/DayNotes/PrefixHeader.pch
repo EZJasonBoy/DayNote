@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  DayNotes
+//
+//  Created by lanou3g on 15/10/14.
+//  Copyright (c) 2015年 郭兆伟. All rights reserved.
+//
+
+#ifndef DayNotes_PrefixHeader_pch
+#define DayNotes_PrefixHeader_pch
+
+
+
+#endif
