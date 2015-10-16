@@ -49,7 +49,6 @@
 		C21C864D1BCF5B4A004C78D2 /* MoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C864C1BCF5B4A004C78D2 /* MoodViewController.m */; };
 		C21C86501BCF5B8D004C78D2 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C864F1BCF5B8D004C78D2 /* ShareViewController.m */; };
 		C21C865F1BCF75AC004C78D2 /* AddDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C865E1BCF75AC004C78D2 /* AddDiaryViewController.m */; };
-		C21C86931BCF9B81004C78D2 /* 13133775(小).png in Resources */ = {isa = PBXBuildFile; fileRef = C21C86921BCF9B81004C78D2 /* 13133775(小).png */; };
 		C21C87091BCFBF7C004C78D2 /* ic_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C87071BCFBF7C004C78D2 /* ic_menu@3x.png */; };
 		C21C870A1BCFBF7C004C78D2 /* ic_menuRotated@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C87081BCFBF7C004C78D2 /* ic_menuRotated@3x.png */; };
 		C21C87741BCFD61E004C78D2 /* RootTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87731BCFD61E004C78D2 /* RootTabBarViewController.m */; };
@@ -57,6 +56,9 @@
 		C21C877C1BCFE7C6004C78D2 /* PopUpBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C877B1BCFE7C6004C78D2 /* PopUpBoxViewController.m */; };
 		C21C87861BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87851BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m */; };
 		C21C87891BCFF75E004C78D2 /* AddDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87881BCFF75E004C78D2 /* AddDiaryView.m */; };
+		C2E1BE2A1BD0FE8D000A82E3 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E1BE291BD0FE8D000A82E3 /* wrong.png */; };
+		C2E1BE2C1BD0FE91000A82E3 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E1BE2B1BD0FE91000A82E3 /* check.png */; };
+		C2F06BC01BD0A750006D4091 /* 13133775(小).png in Resources */ = {isa = PBXBuildFile; fileRef = C2F06BBF1BD0A750006D4091 /* 13133775(小).png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,7 +165,6 @@
 		C21C864F1BCF5B8D004C78D2 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		C21C865D1BCF75AC004C78D2 /* AddDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDiaryViewController.h; sourceTree = "<group>"; };
 		C21C865E1BCF75AC004C78D2 /* AddDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDiaryViewController.m; sourceTree = "<group>"; };
-		C21C86921BCF9B81004C78D2 /* 13133775(小).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13133775(小).png"; sourceTree = "<group>"; };
 		C21C87071BCFBF7C004C78D2 /* ic_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_menu@3x.png"; path = "../CodeClass/Controller/ic_menu@3x.png"; sourceTree = "<group>"; };
 		C21C87081BCFBF7C004C78D2 /* ic_menuRotated@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_menuRotated@3x.png"; path = "../CodeClass/Controller/ic_menuRotated@3x.png"; sourceTree = "<group>"; };
 		C21C87721BCFD61E004C78D2 /* RootTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarViewController.h; sourceTree = "<group>"; };
@@ -176,6 +177,9 @@
 		C21C87851BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TransformColorAndImage.m"; sourceTree = "<group>"; };
 		C21C87871BCFF75E004C78D2 /* AddDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDiaryView.h; sourceTree = "<group>"; };
 		C21C87881BCFF75E004C78D2 /* AddDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDiaryView.m; sourceTree = "<group>"; };
+		C2E1BE291BD0FE8D000A82E3 /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wrong.png; sourceTree = "<group>"; };
+		C2E1BE2B1BD0FE91000A82E3 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		C2F06BBF1BD0A750006D4091 /* 13133775(小).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13133775(小).png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,9 +472,11 @@
 		C21C860E1BCF4872004C78D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2E1BE2B1BD0FE91000A82E3 /* check.png */,
+				C2E1BE291BD0FE8D000A82E3 /* wrong.png */,
 				C21C87071BCFBF7C004C78D2 /* ic_menu@3x.png */,
 				C21C87081BCFBF7C004C78D2 /* ic_menuRotated@3x.png */,
-				C21C86921BCF9B81004C78D2 /* 13133775(小).png */,
+				C2F06BBF1BD0A750006D4091 /* 13133775(小).png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -564,10 +570,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2E1BE2A1BD0FE8D000A82E3 /* wrong.png in Resources */,
 				C21C87091BCFBF7C004C78D2 /* ic_menu@3x.png in Resources */,
 				C21C85E61BCF4838004C78D2 /* LaunchScreen.xib in Resources */,
+				C2F06BC01BD0A750006D4091 /* 13133775(小).png in Resources */,
 				C21C870A1BCFBF7C004C78D2 /* ic_menuRotated@3x.png in Resources */,
-				C21C86931BCF9B81004C78D2 /* 13133775(小).png in Resources */,
+				C2E1BE2C1BD0FE91000A82E3 /* check.png in Resources */,
 				C21C85E31BCF4838004C78D2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

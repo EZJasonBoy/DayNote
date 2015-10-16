@@ -11,12 +11,17 @@
 
 @protocol AddDiaryViewDelegate <NSObject>
 
+- (void)backToView:(BOOL)isOK;
 
 
 @end
 
 @interface AddDiaryView : UIView
 
+@property (nonatomic, assign) id<AddDiaryViewDelegate>delegate;
+
+@property (nonatomic, strong) UIToolbar *toolBar;
+@property (nonatomic, strong) UIView *backGroundView;
 @property (nonatomic, strong) UILabel *datelabel;
 @property (nonatomic, strong) UIButton *moodSelect;
 @property (nonatomic, strong) UIButton *weatherShow;

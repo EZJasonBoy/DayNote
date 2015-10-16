@@ -48,7 +48,7 @@
 }
 - (UILabel *)detailsText {
     if (!_detailsText) {
-        _detailsText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.weatherLabel.frame), CGRectGetMaxY(self.weatherImageView.frame)+10, 339, 68)];
+        _detailsText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.weatherLabel.frame), CGRectGetMaxY(self.weatherImageView.frame)+10, 339, 68)];
         [self.backView addSubview:_detailsText];
     }
     return _detailsText;

@@ -36,6 +36,7 @@
     UITabBarController *mainTBC = [[UITabBarController alloc] init];
     [mainTBC.tabBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColor]]];
     mainTBC.viewControllers = @[myDiaryNC, calendarNC, moodNC, shareNC];
+    mainTBC.tabBar.layer.borderColor = [UIColor whiteColor].CGColor;
     
     myDiaryNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的日记" image:nil tag:1];
     calendarNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"回忆" image:nil tag:2];
@@ -43,15 +44,25 @@
     shareNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"分享" image:nil tag:4];
     
     
-    UIButton *addDiary = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addDiary setBackgroundColor:[UIColor colorWithWhite:0.253 alpha:1.000]];
+    FUIButton *addDiary = [FUIButton buttonWithType:UIButtonTypeCustom];
+    
     [addDiary setFrame:CGRectMake(172, -23, 46, 46)];
+    CGPoint center = addDiary.center;
+    center.x = self.window.center.x;
+    addDiary.center = center;
+    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColor]] forState:UIControlStateNormal];
+    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColorDark]] forState:UIControlStateHighlighted];
     [addDiary.layer setCornerRadius:23];
     [addDiary setClipsToBounds:YES];
-    [addDiary setBackgroundImage:[UIImage imageNamed:@"/Users/lanou3g/Desktop/13133775(小).png"] forState:UIControlStateNormal];
+    [addDiary setImage:[UIImage imageNamed:@"/Users/lanou3g/Desktop/13133775(小).png"] forState:UIControlStateNormal];
+    [addDiary setImage:[UIImage imageNamed:@"/Users/lanou3g/Desktop/13133775(小).png"] forState:UIControlStateHighlighted];
     [addDiary addTarget:self action:@selector(addMyDiary:) forControlEvents:UIControlEventTouchUpInside];
     [mainTBC.tabBar addSubview:addDiary];
-
+    
+    
+    
+    
+    
     self.window.rootViewController = mainTBC;
     
     return YES;
