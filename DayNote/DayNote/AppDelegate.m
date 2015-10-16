@@ -21,10 +21,45 @@
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    MainViewController *mainVC = [[MainViewController alloc]init];
-    UINavigationController *mainViewNC = [[UINavigationController alloc] initWithRootViewController:mainVC];
-    self.window.rootViewController = mainViewNC;
+//    
+    MyDiaryTableViewController *myDiaryTVC = [[MyDiaryTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    UINavigationController *myDiaryNC = [[UINavigationController alloc] initWithRootViewController:myDiaryTVC];
+    CalendarViewController *calendarVC = [[CalendarViewController alloc] init];
+    UINavigationController *calendarNC = [[UINavigationController alloc] initWithRootViewController:calendarVC];
+    MoodViewController *moodVC = [[MoodViewController alloc] init];
+    UINavigationController *moodNC = [[UINavigationController alloc] initWithRootViewController:moodVC];
+    ShareViewController *shareVC = [[ShareViewController alloc] init];
+    UINavigationController *shareNC = [[UINavigationController alloc] initWithRootViewController:shareVC];
+    
+    
+    
+    UITabBarController *mainTBC = [[UITabBarController alloc] init];
+    [mainTBC.tabBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColor]]];
+    mainTBC.viewControllers = @[myDiaryNC, calendarNC, moodNC, shareNC];
+    
+    myDiaryNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的日记" image:nil tag:1];
+    calendarNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"回忆" image:nil tag:2];
+    moodNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"心情" image:nil tag:3];
+    shareNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"分享" image:nil tag:4];
+    
+    
+    UIButton *addDiary = [UIButton buttonWithType:UIButtonTypeCustom];
+    [addDiary setBackgroundColor:[UIColor colorWithWhite:0.253 alpha:1.000]];
+    [addDiary setFrame:CGRectMake(172, -23, 46, 46)];
+    [addDiary.layer setCornerRadius:23];
+    [addDiary setClipsToBounds:YES];
+    [addDiary setBackgroundImage:[UIImage imageNamed:@"/Users/lanou3g/Desktop/13133775(小).png"] forState:UIControlStateNormal];
+    [addDiary addTarget:self action:@selector(addMyDiary:) forControlEvents:UIControlEventTouchUpInside];
+    [mainTBC.tabBar addSubview:addDiary];
+
+    self.window.rootViewController = mainTBC;
+    
     return YES;
+}
+
+- (void)addMyDiary:(UIButton *)sender {
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
