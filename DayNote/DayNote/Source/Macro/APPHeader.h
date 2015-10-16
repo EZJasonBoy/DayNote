@@ -7,31 +7,20 @@
 //  这里存放普通的app宏定义和声明等信息.
 
 #ifndef Project_APPHeader_h
-
 #define Project_APPHeader_h
-// base
 
 
-// code
-#import "MainViewController.h"
+#import "CalendarViewController.h"
+#import "CalendarView.h"
+#import "SignInViewController.h"
+#import "SignView.h"
+#import "SetTableViewController.h"
+#import "SetTableViewCell.h"
 
-// model
-
-
-// net
-
-
-
-// helper
-#import "ImageToCOlor.h"
-
-#define kScreenWidth CGRectGetWidth([[UIScreen mainScreen] bounds])
-#define kScrollViewWidth kScreenWidth
-#define kScrollViewHeight kScrollViewWidth
-
-
-
-
+#import "CKCalendarView.h"
+#import "CKViewController.h"
+#import "NoteTableViewCell.h"
+//#import <AVOSCloud/AVOSCloud.h>
 
 
 

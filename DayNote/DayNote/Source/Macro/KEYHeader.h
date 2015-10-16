@@ -9,12 +9,4 @@
 #ifndef Project_KEYHeader_h
 #define Project_KEYHeader_h
 
-// 友盟appKey
-#define UMAPPKEY @"53cde22c56240b55aa02368c"
-
-// leancloud appKey
-#define UMAPPKEY @"53cde22c56240b55aa02368c"
-
-//
-
 #endif

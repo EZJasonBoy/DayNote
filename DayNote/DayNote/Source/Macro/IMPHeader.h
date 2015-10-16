@@ -9,7 +9,4 @@
 #ifndef Project_IMPHeader_h
 #define Project_IMPHeader_h
 
-#import "UMSocial.h"
-
-
 #endif

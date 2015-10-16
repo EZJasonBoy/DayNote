@@ -3,11 +3,12 @@
 //  DayNote
 //
 //  Created by lanou3g on 15/10/15.
-//  Copyright (c) 2015年 郭兆伟. All rights reserved.
+//  Copyright (c) 2015年 刘晓阳. All rights reserved.
 //
 
 #import "AppDelegate.h"
-
+#import "CalendarViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
 @interface AppDelegate ()
 
 @end
@@ -17,13 +18,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    MainViewController *mainVC = [[MainViewController alloc]init];
-    UINavigationController *mainViewNC = [[UINavigationController alloc] initWithRootViewController:mainVC];
-    self.window.rootViewController = mainViewNC;
+     // CalendarViewController *calendar = [[CalendarViewController alloc]init];
+    // SignInViewController *sign = [[SignInViewController alloc]init];
+    // SetTableViewController *set = [[SetTableViewController alloc]initWithStyle:UITableViewStyleGrouped];
+
+    CKViewController *ck = [[CKViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:ck];
+//    //  设置导航条背景颜色
+//    [[UINavigationBar appearance]setBarTintColor:[UIColor clearColor]];
+//    [[UINavigationBar appearance]setBarStyle:UIBarStyleBlack];
+    self.window.rootViewController  = nav;
+    
+//    [AVOSCloud setApplicationId:@"E7cnkG3jvtaopu6urja6Edqq"
+//                      clientKey:@"E1sCWWCXzBkOLFNAXt6tputK"];
+////    
+////    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     return YES;
 }
 

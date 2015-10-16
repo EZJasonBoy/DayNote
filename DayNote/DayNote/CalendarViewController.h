@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CalendarViewController.h
 //  DayNote
 //
 //  Created by lanou3g on 15/10/15.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface CalendarViewController : UIViewController
 
 @end
-
