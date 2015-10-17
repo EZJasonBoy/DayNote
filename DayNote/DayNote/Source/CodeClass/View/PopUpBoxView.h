@@ -22,8 +22,10 @@
 @interface PopUpBoxView : UIView
 
 @property (nonatomic, assign) id<PopUpBoxViewDelegate>delegate;
+
 @property (nonatomic, strong) UIButton *signIn;
 @property (nonatomic, strong) UIButton *userInfo;
 @property (nonatomic, strong) UIButton *setting;
+
 
 @end

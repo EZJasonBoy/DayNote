@@ -62,23 +62,39 @@ static GetDataTools *tools = nil;
 
 - (NSArray *)selectAllData {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"AllMyDiary" inManagedObjectContext:self.context];
-    NSError *error;
     [request setEntity:entity];
+    
+    NSError *error;
     self.dataArray = [self.context executeFetchRequest:request error:&error];
     
     return self.dataArray;
 }
 
 - (NSArray *)descendingDataArray {
-    NSMutableArray *tempArray;
-    int b = (int)[self selectAllData].count-1;
-    for (int i = 0; i < [self selectAllData].count; i++ ,b--) {
-        tempArray[b] = self.dataArray[i];
+    
+    NSMutableArray *tempArray = [NSMutableArray array];
+    
+    for (int i = (int)[self selectAllData].count-1; i >=0; i--) {
+        [tempArray addObject:self.selectAllData[i]];
     }
     
     return tempArray;
 }
 
+- (BOOL)deleteDataWithDate:(NSDate *)aDate {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"AllMyDiary"];
+    request.predicate = [NSPredicate predicateWithFormat:@"createDate = %@", aDate];
+    NSError *error;
+    NSArray *tempArray = [self.context executeFetchRequest:request error:&error];
+    [self.context deleteObject:tempArray[0]];
+    
+    if (![self.context save:&error]) {
+        return YES;
+    }else {
+        return NO;
+    }
+}
 
 @end

@@ -17,17 +17,19 @@
 @implementation PopUpBoxViewController
 
 - (void)loadView {
-    self.popUpBox = [[PopUpBoxView alloc] initWithFrame:CGRectMake(0, -130, 1, 1)];
+    self.popUpBox = [[PopUpBoxView alloc] initWithFrame:CGRectMake(0, -623, 375, 623)];
     self.view = _popUpBox;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     self.popUpBox.delegate = self;
-    self.popUpBox.backgroundColor = [UIColor flatMintColor];
+    self.popUpBox.backgroundColor = [UIColor flatBlueColor];
+
     self.popUpBox.layer.cornerRadius = 2;
-    self.popUpBox.signIn.hidden = YES;
+    self.popUpBox.signIn.hidden = NO;
 }
 
 - (void)signIn {

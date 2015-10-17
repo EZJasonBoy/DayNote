@@ -51,15 +51,23 @@
 		C21C865F1BCF75AC004C78D2 /* AddDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C865E1BCF75AC004C78D2 /* AddDiaryViewController.m */; };
 		C21C87091BCFBF7C004C78D2 /* ic_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C87071BCFBF7C004C78D2 /* ic_menu@3x.png */; };
 		C21C870A1BCFBF7C004C78D2 /* ic_menuRotated@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C87081BCFBF7C004C78D2 /* ic_menuRotated@3x.png */; };
-		C21C87741BCFD61E004C78D2 /* RootTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87731BCFD61E004C78D2 /* RootTabBarViewController.m */; };
 		C21C87791BCFE47E004C78D2 /* PopUpBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87781BCFE47E004C78D2 /* PopUpBoxView.m */; };
 		C21C877C1BCFE7C6004C78D2 /* PopUpBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C877B1BCFE7C6004C78D2 /* PopUpBoxViewController.m */; };
 		C21C87861BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87851BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m */; };
 		C21C87891BCFF75E004C78D2 /* AddDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87881BCFF75E004C78D2 /* AddDiaryView.m */; };
+		C266C1ED1BD2695100D9477A /* PageJumpController.m in Sources */ = {isa = PBXBuildFile; fileRef = C266C1EC1BD2695100D9477A /* PageJumpController.m */; };
 		C2CFC7A61BD143650025C8D6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CFC7A51BD143650025C8D6 /* CoreData.framework */; };
 		C2CFC7A91BD143D20025C8D6 /* DayNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2CFC7A71BD143D20025C8D6 /* DayNote.xcdatamodeld */; };
 		C2CFC7AC1BD149D10025C8D6 /* AllMyDiary.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CFC7AB1BD149D10025C8D6 /* AllMyDiary.m */; };
 		C2CFC7AF1BD14A2D0025C8D6 /* GetDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CFC7AE1BD14A2D0025C8D6 /* GetDataTools.m */; };
+		C2DD01AA1BD22AF1002501FA /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01A91BD22AF1002501FA /* AVOSCloud.framework */; };
+		C2DD01AC1BD22B29002501FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01AB1BD22B29002501FA /* SystemConfiguration.framework */; };
+		C2DD01AE1BD22B30002501FA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01AD1BD22B30002501FA /* MobileCoreServices.framework */; };
+		C2DD01B01BD22B37002501FA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01AF1BD22B37002501FA /* CoreTelephony.framework */; };
+		C2DD01B21BD22B3D002501FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01B11BD22B3D002501FA /* CoreLocation.framework */; };
+		C2DD01B41BD22B45002501FA /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01B31BD22B45002501FA /* libicucore.dylib */; };
+		C2DD01B61BD22BC7002501FA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01B51BD22BC7002501FA /* libsqlite3.dylib */; };
+		C2DD01B81BD22BCE002501FA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD01B71BD22BCE002501FA /* libz.dylib */; };
 		C2E1BE2A1BD0FE8D000A82E3 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E1BE291BD0FE8D000A82E3 /* wrong.png */; };
 		C2E1BE2E1BD10501000A82E3 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E1BE2D1BD10501000A82E3 /* check.png */; };
 		C2E3EF831BD1EB45006A9FCD /* ConversionWithDate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E3EF821BD1EB45006A9FCD /* ConversionWithDate.m */; };
@@ -172,8 +180,6 @@
 		C21C865E1BCF75AC004C78D2 /* AddDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDiaryViewController.m; sourceTree = "<group>"; };
 		C21C87071BCFBF7C004C78D2 /* ic_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_menu@3x.png"; path = "../CodeClass/Controller/ic_menu@3x.png"; sourceTree = "<group>"; };
 		C21C87081BCFBF7C004C78D2 /* ic_menuRotated@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_menuRotated@3x.png"; path = "../CodeClass/Controller/ic_menuRotated@3x.png"; sourceTree = "<group>"; };
-		C21C87721BCFD61E004C78D2 /* RootTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarViewController.h; sourceTree = "<group>"; };
-		C21C87731BCFD61E004C78D2 /* RootTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarViewController.m; sourceTree = "<group>"; };
 		C21C87771BCFE47E004C78D2 /* PopUpBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpBoxView.h; sourceTree = "<group>"; };
 		C21C87781BCFE47E004C78D2 /* PopUpBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpBoxView.m; sourceTree = "<group>"; };
 		C21C877A1BCFE7C6004C78D2 /* PopUpBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpBoxViewController.h; sourceTree = "<group>"; };
@@ -182,12 +188,22 @@
 		C21C87851BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TransformColorAndImage.m"; sourceTree = "<group>"; };
 		C21C87871BCFF75E004C78D2 /* AddDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDiaryView.h; sourceTree = "<group>"; };
 		C21C87881BCFF75E004C78D2 /* AddDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDiaryView.m; sourceTree = "<group>"; };
+		C266C1EB1BD2695100D9477A /* PageJumpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageJumpController.h; path = ../../BaseClass/PageJumpController.h; sourceTree = "<group>"; };
+		C266C1EC1BD2695100D9477A /* PageJumpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageJumpController.m; path = ../../BaseClass/PageJumpController.m; sourceTree = "<group>"; };
 		C2CFC7A51BD143650025C8D6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C2CFC7A81BD143D20025C8D6 /* DayNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DayNote.xcdatamodel; sourceTree = "<group>"; };
 		C2CFC7AA1BD149D10025C8D6 /* AllMyDiary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllMyDiary.h; sourceTree = "<group>"; };
 		C2CFC7AB1BD149D10025C8D6 /* AllMyDiary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllMyDiary.m; sourceTree = "<group>"; };
 		C2CFC7AD1BD14A2D0025C8D6 /* GetDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDataTools.h; sourceTree = "<group>"; };
 		C2CFC7AE1BD14A2D0025C8D6 /* GetDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDataTools.m; sourceTree = "<group>"; };
+		C2DD01A91BD22AF1002501FA /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
+		C2DD01AB1BD22B29002501FA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C2DD01AD1BD22B30002501FA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C2DD01AF1BD22B37002501FA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		C2DD01B11BD22B3D002501FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C2DD01B31BD22B45002501FA /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		C2DD01B51BD22BC7002501FA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C2DD01B71BD22BCE002501FA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C2E1BE291BD0FE8D000A82E3 /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wrong.png; sourceTree = "<group>"; };
 		C2E1BE2D1BD10501000A82E3 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		C2E3EF811BD1EB45006A9FCD /* ConversionWithDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionWithDate.h; sourceTree = "<group>"; };
@@ -200,7 +216,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DD01B81BD22BCE002501FA /* libz.dylib in Frameworks */,
+				C2DD01B61BD22BC7002501FA /* libsqlite3.dylib in Frameworks */,
+				C2DD01B41BD22B45002501FA /* libicucore.dylib in Frameworks */,
+				C2DD01B21BD22B3D002501FA /* CoreLocation.framework in Frameworks */,
+				C2DD01B01BD22B37002501FA /* CoreTelephony.framework in Frameworks */,
+				C2DD01AE1BD22B30002501FA /* MobileCoreServices.framework in Frameworks */,
+				C2DD01AC1BD22B29002501FA /* SystemConfiguration.framework in Frameworks */,
 				C2CFC7A61BD143650025C8D6 /* CoreData.framework in Frameworks */,
+				C2DD01AA1BD22AF1002501FA /* AVOSCloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,8 +425,8 @@
 		C21C85FF1BCF4872004C78D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C21C87721BCFD61E004C78D2 /* RootTabBarViewController.h */,
-				C21C87731BCFD61E004C78D2 /* RootTabBarViewController.m */,
+				C266C1EB1BD2695100D9477A /* PageJumpController.h */,
+				C266C1EC1BD2695100D9477A /* PageJumpController.m */,
 				C21C86431BCF4F89004C78D2 /* MyDiaryTableViewController.h */,
 				C21C86441BCF4F89004C78D2 /* MyDiaryTableViewController.m */,
 				C21C877A1BCFE7C6004C78D2 /* PopUpBoxViewController.h */,
@@ -459,6 +483,13 @@
 		C21C86041BCF4872004C78D2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				C2DD01B71BD22BCE002501FA /* libz.dylib */,
+				C2DD01B51BD22BC7002501FA /* libsqlite3.dylib */,
+				C2DD01B31BD22B45002501FA /* libicucore.dylib */,
+				C2DD01B11BD22B3D002501FA /* CoreLocation.framework */,
+				C2DD01AF1BD22B37002501FA /* CoreTelephony.framework */,
+				C2DD01AD1BD22B30002501FA /* MobileCoreServices.framework */,
+				C2DD01AB1BD22B29002501FA /* SystemConfiguration.framework */,
 				C2CFC7A51BD143650025C8D6 /* CoreData.framework */,
 			);
 			path = Framework;
@@ -506,10 +537,27 @@
 		C21C860F1BCF4872004C78D2 /* TheThird */ = {
 			isa = PBXGroup;
 			children = (
+				C2DD01A71BD22AF1002501FA /* AVOSCloud */,
 				C217E49F1BD0A17300D5F866 /* Chameleon */,
 				C20405D01BD0A0CE002BE9D0 /* FlatUIKit */,
 			);
 			path = TheThird;
+			sourceTree = "<group>";
+		};
+		C2DD01A71BD22AF1002501FA /* AVOSCloud */ = {
+			isa = PBXGroup;
+			children = (
+				C2DD01A81BD22AF1002501FA /* Static */,
+			);
+			path = AVOSCloud;
+			sourceTree = "<group>";
+		};
+		C2DD01A81BD22AF1002501FA /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				C2DD01A91BD22AF1002501FA /* AVOSCloud.framework */,
+			);
+			path = Static;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -656,11 +704,11 @@
 				C204060B1BD0A0CE002BE9D0 /* UITabBar+FlatUI.m in Sources */,
 				C2CFC7A91BD143D20025C8D6 /* DayNote.xcdatamodeld in Sources */,
 				C21C864D1BCF5B4A004C78D2 /* MoodViewController.m in Sources */,
-				C21C87741BCFD61E004C78D2 /* RootTabBarViewController.m in Sources */,
 				C20406051BD0A0CE002BE9D0 /* UIImage+FlatUI.m in Sources */,
 				C20405FF1BD0A0CE002BE9D0 /* FUISwitch.m in Sources */,
 				C20406031BD0A0CE002BE9D0 /* UIColor+FlatUI.m in Sources */,
 				C20406061BD0A0CE002BE9D0 /* UINavigationBar+FlatUI.m in Sources */,
+				C266C1ED1BD2695100D9477A /* PageJumpController.m in Sources */,
 				C20405FD1BD0A0CE002BE9D0 /* FUIPopoverBackgroundView.m in Sources */,
 				C21C86491BCF4FAF004C78D2 /* DiaryListTableViewCell.m in Sources */,
 				C2E3EF831BD1EB45006A9FCD /* ConversionWithDate.m in Sources */,
@@ -781,9 +829,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DayNote/Source/TheThird/AVOSCloud/Static",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DayNote/PrefixHeader.pch";
 				INFOPLIST_FILE = DayNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -792,9 +845,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DayNote/Source/TheThird/AVOSCloud/Static",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DayNote/PrefixHeader.pch";
 				INFOPLIST_FILE = DayNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

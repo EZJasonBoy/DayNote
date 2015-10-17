@@ -14,4 +14,6 @@
 #import "Chameleon.h"
 #import "FlatUIKit.h"
 
+// 数据库
+#import <AVOSCloud/AVOSCloud.h>
 #endif

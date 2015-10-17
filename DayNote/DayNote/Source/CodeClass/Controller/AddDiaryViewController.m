@@ -29,7 +29,7 @@
     
     self.writeDiary.editPage.backgroundColor = [UIColor flatWhiteColor];
     self.writeDiary.editPage.textContainer.lineBreakMode = NSLineBreakByClipping;
-    self.writeDiary.editPage.text = @"这是一个测试文本.- (void)applicationWillTerminate:(UIApplication *)application; //当程序将要退出是被调用，通常是用来保存数据和一些退出前的清理工作。这个需要要设置UIApplicationExitsOnSuspend的键值。- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application;// try to clean up as much memory as possible. next step is to terminate app//内存较低时调用";
+    self.writeDiary.editPage.text = @"";
     self.writeDiary.editPage.font = [UIFont fontWithName:@"Menlo" size:14];
     self.writeDiary.editPage.delegate = self;
     [self.writeDiary.toolBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColor]] forToolbarPosition:UIBarPositionBottom barMetrics:UIBarMetricsDefault];

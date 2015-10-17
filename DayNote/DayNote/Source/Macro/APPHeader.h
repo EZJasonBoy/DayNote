@@ -13,13 +13,13 @@
 //
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
-
+#import "PageJumpController.h"
 // base
 #import "ConversionWithDate.h"
 #import "GetDataTools.h"
 
 // code
-#import "RootTabBarViewController.h"
+//#import "RootTabBarViewController.h"
 #import "CalendarViewController.h"
 #import "MyDiaryTableViewController.h"
 #import "MoodViewController.h"

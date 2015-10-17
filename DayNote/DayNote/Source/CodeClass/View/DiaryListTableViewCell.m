@@ -17,17 +17,19 @@
     }
     return _backView;
 }
+
 - (UILabel *)weatherLabel {
     if (!_weatherLabel) {
         _weatherLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 4, 40, 33)];
-        [self.backView addSubview:_weatherLabel];
+        [self addSubview:_weatherLabel];
     }
     return _weatherLabel;
 }
+
 - (UIImageView *)weatherImageView {
     if (!_weatherImageView) {
         _weatherImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.weatherLabel.frame)+10, 2, 42, 37)];
-        [self.backView addSubview:_weatherImageView];
+        [self addSubview:_weatherImageView];
     }
     return _weatherImageView;
 }
@@ -35,21 +37,23 @@
 - (UILabel *)moodLabel {
     if (!_moodLabel) {
         _moodLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.weatherImageView.frame)+20, 4, 40, 33)];
-        [self.backView addSubview:_moodLabel];
+        [self addSubview:_moodLabel];
     }
     return _moodLabel;
 }
 - (UIImageView *)moodImageView {
     if (!_moodImageView) {
         _moodImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.moodLabel.frame)+10, 2, 42, 37)];
-        [self.backView addSubview:_moodImageView];
+        [self addSubview:_moodImageView];
     }
     return _moodImageView;
 }
 - (UILabel *)detailsText {
     if (!_detailsText) {
-        _detailsText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.weatherLabel.frame), CGRectGetMaxY(self.weatherImageView.frame)+10, 339, 68)];
-        [self.backView addSubview:_detailsText];
+        _detailsText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.weatherLabel.frame), CGRectGetMaxY(self.weatherImageView.frame)+2, 339, 32)];
+        _detailsText.numberOfLines = 0;
+        _detailsText.lineBreakMode = NSLineBreakByCharWrapping;
+        [self addSubview:_detailsText];
     }
     return _detailsText;
 }

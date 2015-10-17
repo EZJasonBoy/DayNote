@@ -18,25 +18,25 @@
 }
 
 - (void)p_setUp {
-    self.backgroundColor = [UIColor redColor];
     
-    UIButton *signIn = [UIButton buttonWithType:UIButtonTypeCustom];
-    signIn.frame = CGRectMake(-8,5, 70, 33);
-    [signIn addTarget:self action:@selector(signIn:) forControlEvents:UIControlEventTouchUpInside];
-    [signIn setTitle:@"登录" forState:UIControlStateNormal];
-    [self addSubview:signIn];
     
-    UIButton *userInfo = [UIButton buttonWithType:UIButtonTypeCustom];
-    userInfo.frame = CGRectMake(CGRectGetMinX(signIn.frame),CGRectGetMaxY(signIn.frame)+10, 100, 33);
-    [userInfo addTarget:self action:@selector(intoUserCenter:) forControlEvents:UIControlEventTouchUpInside];
-    [userInfo setTitle:@"个人中心" forState:UIControlStateNormal];
-    [self addSubview:userInfo];
+    self.signIn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.signIn.frame = CGRectMake(-8,5, 70, 33);
+    [self.signIn addTarget:self action:@selector(signIn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.signIn setTitle:@"登录" forState:UIControlStateNormal];
+    [self addSubview:_signIn];
     
-    UIButton *setting = [UIButton buttonWithType:UIButtonTypeCustom];
-    setting.frame = CGRectMake(CGRectGetMinX(userInfo.frame),CGRectGetMaxY(userInfo.frame)+10, 70, 33);
-    [setting addTarget:self action:@selector(intoSetting:) forControlEvents:UIControlEventTouchUpInside];
-    [setting setTitle:@"设置" forState:UIControlStateNormal];
-    [self addSubview:setting];
+    self.userInfo = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.userInfo.frame = CGRectMake(CGRectGetMinX(self.signIn.frame),CGRectGetMaxY(self.signIn.frame)+10, 100, 33);
+    [self.userInfo addTarget:self action:@selector(intoUserCenter:) forControlEvents:UIControlEventTouchUpInside];
+    [self.userInfo setTitle:@"个人中心" forState:UIControlStateNormal];
+    [self addSubview:_userInfo];
+    
+    self.setting = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.setting.frame = CGRectMake(CGRectGetMinX(self.userInfo.frame),CGRectGetMaxY(self.userInfo.frame)+10, 70, 33);
+    [self.setting addTarget:self action:@selector(intoSetting:) forControlEvents:UIControlEventTouchUpInside];
+    [self.setting setTitle:@"设置" forState:UIControlStateNormal];
+    [self addSubview:_setting];
 }
 
 - (void)signIn:(UIButton *)sender {

@@ -16,4 +16,5 @@
 - (BOOL)addDiaryWithModel:(NSDate *)contentDate create:(NSDate *)createDate details:(NSString *)diaryBody;
 - (NSArray *)selectAllData;
 - (NSArray *)descendingDataArray;
+- (BOOL)deleteDataWithDate:(NSDate *)aDate;
 @end

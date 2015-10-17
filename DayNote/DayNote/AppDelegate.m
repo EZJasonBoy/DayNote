@@ -35,7 +35,7 @@
     
     
     UITabBarController *mainTBC = [[UITabBarController alloc] init];
-    [mainTBC.tabBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColor]]];
+    [mainTBC.tabBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]]];
     mainTBC.viewControllers = @[myDiaryNC, calendarNC, placeholder,moodNC, shareNC];
     mainTBC.tabBar.layer.borderColor = [UIColor whiteColor].CGColor;
     
@@ -64,6 +64,8 @@
     [mainTBC.tabBar addSubview:addDiary];
     
     
+    [AVOSCloud setApplicationId:@"J9wH2THYLIMQTO5CEtOnEWpj"
+                      clientKey:@"yrkBJhd1KKlKCPrbFh8q2cIu"];
     
     self.window.rootViewController = mainTBC;
     
