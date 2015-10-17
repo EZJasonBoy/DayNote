@@ -20,9 +20,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.diaryGroup = [NSMutableArray array];
+    self.diaryGroup =  [[GetDataTools shareGetDataTool] descendingDataArray].mutableCopy;;
+    NSLog(@"%@", self.diaryGroup);
     [self.tableView registerClass:[DiaryListTableViewCell class] forCellReuseIdentifier:@"diary"];
     [self p_setNavigationBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
+
+- (void)getLocalData {
+
 }
 
 // 设置导航栏
@@ -41,6 +50,7 @@
 
 - (void)searchMyDiary:(UIBarButtonItem *)sender {
     AddDiaryViewController *writeDiary = [[AddDiaryViewController alloc] init];
+    writeDiary.contentDate = [NSDate dateWithTimeIntervalSinceNow:0];
     [self presentViewController:writeDiary animated:YES completion:nil];
 }
 
@@ -87,7 +97,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     // Return the number of sections.
-    return 13;
+    return self.diaryGroup.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -103,13 +113,19 @@
     // Configure the cell...
     cell.weatherLabel.text = @"天气";
     cell.moodLabel.text = @"心情";
-    cell.detailsText.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    cell.detailsText.text = ((AllMyDiary *)self.diaryGroup[indexPath.section]).diaryBody;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 134;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *str = [[ConversionWithDate shareDateConversion] getStringWithDate:((AllMyDiary *)self.diaryGroup[section]).contentDate type:GZWDateFormatTypeConnector];
+    return str;
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

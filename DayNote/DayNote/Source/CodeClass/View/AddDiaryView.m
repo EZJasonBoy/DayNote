@@ -66,15 +66,14 @@
 - (UIToolbar *)toolBar {
     if (!_toolBar) {
         _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame)-44, 375, 44)];
-        
-        
         [_toolBar setBarStyle:UIBarStyleDefault];
+        
         UIBarButtonItem * button1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"wrong"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
         UIBarButtonItem * button2 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
         UIBarButtonItem * button3 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
         UIBarButtonItem * button4 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
         UIBarButtonItem * button5 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        UIBarButtonItem * button6 =[[UIBarButtonItem  alloc] initWithImage:[UIImage imageNamed:@"/Users/lanou3g/Desktop/check_28.969549330085px_1152182_easyicon.net.png"] style:UIBarButtonItemStylePlain target:self action:@selector(ok:)];
+        UIBarButtonItem * button6 =[[UIBarButtonItem  alloc] initWithImage:[UIImage imageNamed:@"check"] style:UIBarButtonItemStylePlain target:self action:@selector(ok:)];
         [_toolBar setItems:@[button1,button2,button3,button4,button5,button6]];
         [self.backGroundView addSubview:_toolBar];
     }

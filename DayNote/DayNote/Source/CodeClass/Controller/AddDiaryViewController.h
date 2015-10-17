@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AddDiaryViewController : UIViewController
-
+@property (nonatomic, strong) NSDate *contentDate;
 @end

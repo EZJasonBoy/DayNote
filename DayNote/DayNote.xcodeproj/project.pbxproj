@@ -56,8 +56,13 @@
 		C21C877C1BCFE7C6004C78D2 /* PopUpBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C877B1BCFE7C6004C78D2 /* PopUpBoxViewController.m */; };
 		C21C87861BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87851BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m */; };
 		C21C87891BCFF75E004C78D2 /* AddDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C87881BCFF75E004C78D2 /* AddDiaryView.m */; };
+		C2CFC7A61BD143650025C8D6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CFC7A51BD143650025C8D6 /* CoreData.framework */; };
+		C2CFC7A91BD143D20025C8D6 /* DayNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2CFC7A71BD143D20025C8D6 /* DayNote.xcdatamodeld */; };
+		C2CFC7AC1BD149D10025C8D6 /* AllMyDiary.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CFC7AB1BD149D10025C8D6 /* AllMyDiary.m */; };
+		C2CFC7AF1BD14A2D0025C8D6 /* GetDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CFC7AE1BD14A2D0025C8D6 /* GetDataTools.m */; };
 		C2E1BE2A1BD0FE8D000A82E3 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E1BE291BD0FE8D000A82E3 /* wrong.png */; };
-		C2E1BE2C1BD0FE91000A82E3 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E1BE2B1BD0FE91000A82E3 /* check.png */; };
+		C2E1BE2E1BD10501000A82E3 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E1BE2D1BD10501000A82E3 /* check.png */; };
+		C2E3EF831BD1EB45006A9FCD /* ConversionWithDate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E3EF821BD1EB45006A9FCD /* ConversionWithDate.m */; };
 		C2F06BC01BD0A750006D4091 /* 13133775(小).png in Resources */ = {isa = PBXBuildFile; fileRef = C2F06BBF1BD0A750006D4091 /* 13133775(小).png */; };
 /* End PBXBuildFile section */
 
@@ -177,8 +182,16 @@
 		C21C87851BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TransformColorAndImage.m"; sourceTree = "<group>"; };
 		C21C87871BCFF75E004C78D2 /* AddDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDiaryView.h; sourceTree = "<group>"; };
 		C21C87881BCFF75E004C78D2 /* AddDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDiaryView.m; sourceTree = "<group>"; };
+		C2CFC7A51BD143650025C8D6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C2CFC7A81BD143D20025C8D6 /* DayNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DayNote.xcdatamodel; sourceTree = "<group>"; };
+		C2CFC7AA1BD149D10025C8D6 /* AllMyDiary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllMyDiary.h; sourceTree = "<group>"; };
+		C2CFC7AB1BD149D10025C8D6 /* AllMyDiary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllMyDiary.m; sourceTree = "<group>"; };
+		C2CFC7AD1BD14A2D0025C8D6 /* GetDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDataTools.h; sourceTree = "<group>"; };
+		C2CFC7AE1BD14A2D0025C8D6 /* GetDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDataTools.m; sourceTree = "<group>"; };
 		C2E1BE291BD0FE8D000A82E3 /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wrong.png; sourceTree = "<group>"; };
-		C2E1BE2B1BD0FE91000A82E3 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		C2E1BE2D1BD10501000A82E3 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		C2E3EF811BD1EB45006A9FCD /* ConversionWithDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionWithDate.h; sourceTree = "<group>"; };
+		C2E3EF821BD1EB45006A9FCD /* ConversionWithDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionWithDate.m; sourceTree = "<group>"; };
 		C2F06BBF1BD0A750006D4091 /* 13133775(小).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13133775(小).png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2CFC7A61BD143650025C8D6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +380,10 @@
 		C21C85FD1BCF4872004C78D2 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				C2CFC7AD1BD14A2D0025C8D6 /* GetDataTools.h */,
+				C2CFC7AE1BD14A2D0025C8D6 /* GetDataTools.m */,
+				C2E3EF811BD1EB45006A9FCD /* ConversionWithDate.h */,
+				C2E3EF821BD1EB45006A9FCD /* ConversionWithDate.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -404,6 +422,9 @@
 		C21C86001BCF4872004C78D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C2CFC7A71BD143D20025C8D6 /* DayNote.xcdatamodeld */,
+				C2CFC7AA1BD149D10025C8D6 /* AllMyDiary.h */,
+				C2CFC7AB1BD149D10025C8D6 /* AllMyDiary.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -438,6 +459,7 @@
 		C21C86041BCF4872004C78D2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				C2CFC7A51BD143650025C8D6 /* CoreData.framework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -472,7 +494,7 @@
 		C21C860E1BCF4872004C78D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C2E1BE2B1BD0FE91000A82E3 /* check.png */,
+				C2E1BE2D1BD10501000A82E3 /* check.png */,
 				C2E1BE291BD0FE8D000A82E3 /* wrong.png */,
 				C21C87071BCFBF7C004C78D2 /* ic_menu@3x.png */,
 				C21C87081BCFBF7C004C78D2 /* ic_menuRotated@3x.png */,
@@ -570,12 +592,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2E1BE2E1BD10501000A82E3 /* check.png in Resources */,
 				C2E1BE2A1BD0FE8D000A82E3 /* wrong.png in Resources */,
 				C21C87091BCFBF7C004C78D2 /* ic_menu@3x.png in Resources */,
 				C21C85E61BCF4838004C78D2 /* LaunchScreen.xib in Resources */,
 				C2F06BC01BD0A750006D4091 /* 13133775(小).png in Resources */,
 				C21C870A1BCFBF7C004C78D2 /* ic_menuRotated@3x.png in Resources */,
-				C2E1BE2C1BD0FE91000A82E3 /* check.png in Resources */,
 				C21C85E31BCF4838004C78D2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +623,7 @@
 				C20406071BD0A0CE002BE9D0 /* UIPopoverController+FlatUI.m in Sources */,
 				C217E4BB1BD0A17300D5F866 /* NSArray+Chameleon.m in Sources */,
 				C20406001BD0A0CE002BE9D0 /* FUITextField.m in Sources */,
+				C2CFC7AC1BD149D10025C8D6 /* AllMyDiary.m in Sources */,
 				C21C85DB1BCF4838004C78D2 /* AppDelegate.m in Sources */,
 				C217E4C11BD0A17300D5F866 /* UINavigationController+Chameleon.m in Sources */,
 				C20405FA1BD0A0CE002BE9D0 /* FUIAlertView.m in Sources */,
@@ -608,6 +631,7 @@
 				C21C86501BCF5B8D004C78D2 /* ShareViewController.m in Sources */,
 				C204060C1BD0A0CE002BE9D0 /* UITableViewCell+FlatUI.m in Sources */,
 				C217E4BE1BD0A17300D5F866 /* UIColor+ChameleonPrivate.m in Sources */,
+				C2CFC7AF1BD14A2D0025C8D6 /* GetDataTools.m in Sources */,
 				C21C86411BCF48B4004C78D2 /* CalendarViewController.m in Sources */,
 				C21C87861BCFF4BA004C78D2 /* UIImage+TransformColorAndImage.m in Sources */,
 				C21C86451BCF4F89004C78D2 /* MyDiaryTableViewController.m in Sources */,
@@ -630,6 +654,7 @@
 				C20406091BD0A0CE002BE9D0 /* UISlider+FlatUI.m in Sources */,
 				C217E4BF1BD0A17300D5F866 /* UIImage+ChameleonPrivate.m in Sources */,
 				C204060B1BD0A0CE002BE9D0 /* UITabBar+FlatUI.m in Sources */,
+				C2CFC7A91BD143D20025C8D6 /* DayNote.xcdatamodeld in Sources */,
 				C21C864D1BCF5B4A004C78D2 /* MoodViewController.m in Sources */,
 				C21C87741BCFD61E004C78D2 /* RootTabBarViewController.m in Sources */,
 				C20406051BD0A0CE002BE9D0 /* UIImage+FlatUI.m in Sources */,
@@ -638,6 +663,7 @@
 				C20406061BD0A0CE002BE9D0 /* UINavigationBar+FlatUI.m in Sources */,
 				C20405FD1BD0A0CE002BE9D0 /* FUIPopoverBackgroundView.m in Sources */,
 				C21C86491BCF4FAF004C78D2 /* DiaryListTableViewCell.m in Sources */,
+				C2E3EF831BD1EB45006A9FCD /* ConversionWithDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +864,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C2CFC7A71BD143D20025C8D6 /* DayNote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C2CFC7A81BD143D20025C8D6 /* DayNote.xcdatamodel */,
+			);
+			currentVersion = C2CFC7A81BD143D20025C8D6 /* DayNote.xcdatamodel */;
+			path = DayNote.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C21C85CA1BCF4838004C78D2 /* Project object */;
 }

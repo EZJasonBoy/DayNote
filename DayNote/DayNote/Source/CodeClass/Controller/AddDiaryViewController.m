@@ -25,10 +25,7 @@
     // Do any additional setup after loading the view.
     self.writeDiary.backgroundColor = [UIColor whiteColor];
     
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"YYYY.MM.dd"];
-    self.writeDiary.datelabel.text  = [dateFormat stringFromDate:date];
+    self.writeDiary.datelabel.text  = [[ConversionWithDate shareDateConversion] getStringWithDate:self.contentDate type:GZWDateFormatTypePoint];
     
     self.writeDiary.editPage.backgroundColor = [UIColor flatWhiteColor];
     self.writeDiary.editPage.textContainer.lineBreakMode = NSLineBreakByClipping;
@@ -82,7 +79,10 @@
 - (void)backToView:(BOOL)isOK {
     
     if (isOK) {
-        NSLog(@"%@", self.writeDiary.editPage.text);
+        [[GetDataTools shareGetDataTool] addDiaryWithModel:self.contentDate
+                                                    create:[NSDate dateWithTimeIntervalSinceNow:0]
+                                                   details:self.writeDiary.editPage.text];
+       
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AllMyDiary" representedClassName="AllMyDiary" syncable="YES">
+        <attribute name="contentDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="diaryBody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myMood" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myMoodImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="weather" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AllMyDiary" positionX="-45" positionY="0" width="128" height="135"/>
+    </elements>
+</model>

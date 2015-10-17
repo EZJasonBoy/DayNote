@@ -9,8 +9,14 @@
 #ifndef Project_APPHeader_h
 
 #define Project_APPHeader_h
-// base
 
+//
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
+
+// base
+#import "ConversionWithDate.h"
+#import "GetDataTools.h"
 
 // code
 #import "RootTabBarViewController.h"
@@ -20,12 +26,15 @@
 #import "ShareViewController.h"
 #import "AddDiaryViewController.h"
 #import "PopUpBoxViewController.h"
+
 // model
+#import "AllMyDiary.h"
 
 // View
 #import "DiaryListTableViewCell.h"
 #import "PopUpBoxView.h"
 #import "AddDiaryView.h"
+
 // net
 
 
