@@ -11,6 +11,7 @@
 @interface AddDiaryViewController () <AddDiaryViewDelegate,UITextViewDelegate>
 
 @property (nonatomic, strong) AddDiaryView *writeDiary;
+@property (nonatomic, strong) NSDictionary *weatherDict;
 
 @end
 
@@ -25,16 +26,46 @@
     // Do any additional setup after loading the view.
     self.writeDiary.backgroundColor = [UIColor whiteColor];
     
+    self.writeDiary.editPage.delegate = self;
+    
+    [self.writeDiary.toolBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]] forToolbarPosition:UIBarPositionBottom barMetrics:UIBarMetricsDefault];
+    self.writeDiary.delegate = self;
+    
+    
+    [self setUI]; 
+}
+
+- (void)setUI {
+    if (self.type == ADDTYPEInsert) {
+        [self setNetInfo];
+    }else {
+        [self setLocalInfo];
+    }
+}
+
+- (void)setNetInfo {
+    
+    [[RequestWeatherTools shareRequestWeather] getWeatherDetailsWithCity:@"beijing" Weather:^(NSDictionary *dict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.weatherDict = dict;
+            self.writeDiary.weatherShow.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",dict[@"code"]]];
+        });
+    }];
+    
     self.writeDiary.datelabel.text  = [[ConversionWithDate shareDateConversion] getStringWithDate:self.contentDate type:GZWDateFormatTypePoint];
     
-    self.writeDiary.editPage.backgroundColor = [UIColor flatWhiteColor];
-    self.writeDiary.editPage.textContainer.lineBreakMode = NSLineBreakByClipping;
     self.writeDiary.editPage.text = @"";
-    self.writeDiary.editPage.font = [UIFont fontWithName:@"Menlo" size:14];
-    self.writeDiary.editPage.delegate = self;
-    [self.writeDiary.toolBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColor]] forToolbarPosition:UIBarPositionBottom barMetrics:UIBarMetricsDefault];
-    self.writeDiary.delegate = self;
+    
 }
+
+- (void)setLocalInfo {
+    
+    self.writeDiary.weatherShow.image = [UIImage imageNamed:self.weatherImage];
+    self.writeDiary.datelabel.text = [[ConversionWithDate shareDateConversion] getStringWithDate:self.contentDate type:GZWDateFormatTypePoint];
+    self.writeDiary.editPage.text = self.diaryText;
+    
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardAppear:) name:UIKeyboardWillShowNotification object:nil];
@@ -79,10 +110,12 @@
 - (void)backToView:(BOOL)isOK {
     
     if (isOK) {
-        [[GetDataTools shareGetDataTool] addDiaryWithModel:self.contentDate
-                                                    create:[NSDate dateWithTimeIntervalSinceNow:0]
-                                                   details:self.writeDiary.editPage.text];
-       
+        if (self.type == ADDTYPEAdditional) {
+            [[GetDataTools shareGetDataTool] updateDataWithCreateDate:self.createDate ForDetails:self.writeDiary.editPage.text];
+        }else {
+            [[GetDataTools shareGetDataTool] addDiaryForContentDate:self.contentDate Create:[NSDate date] Details:self.writeDiary.editPage.text Weather:self.weatherDict[@"txt"] WeatherImage:self.weatherDict[@"code"]];
+        }
+        
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

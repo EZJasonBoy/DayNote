@@ -29,11 +29,11 @@ static ConversionWithDate *tools = nil;
     return [NSDate date];
 }
 
-- (NSString *)getStringWithDate:(NSDate *)aDate type:(GZWDateFormatType)type {
+- (NSString *)getStringWithDate:(NSDate *)aDate type:(GZWDateFormatType)aType {
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     
-    switch (type) {
+    switch (aType) {
         
         case GZWDateFormatTypeWord:
             [dateFormat setDateFormat:@"YYYY年MM月dd日"];

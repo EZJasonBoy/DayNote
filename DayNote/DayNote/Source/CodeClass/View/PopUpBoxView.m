@@ -19,24 +19,31 @@
 
 - (void)p_setUp {
     
-    
     self.signIn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.signIn.frame = CGRectMake(-8,5, 70, 33);
+    self.signIn.frame = CGRectMake(132.5,100, 100, 32);
     [self.signIn addTarget:self action:@selector(signIn:) forControlEvents:UIControlEventTouchUpInside];
     [self.signIn setTitle:@"登录" forState:UIControlStateNormal];
     [self addSubview:_signIn];
+  
     
     self.userInfo = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.userInfo.frame = CGRectMake(CGRectGetMinX(self.signIn.frame),CGRectGetMaxY(self.signIn.frame)+10, 100, 33);
+    self.userInfo.frame = CGRectMake(132.5,CGRectGetMaxY(self.signIn.frame)+20, 100, 32);
     [self.userInfo addTarget:self action:@selector(intoUserCenter:) forControlEvents:UIControlEventTouchUpInside];
     [self.userInfo setTitle:@"个人中心" forState:UIControlStateNormal];
     [self addSubview:_userInfo];
     
     self.setting = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.setting.frame = CGRectMake(CGRectGetMinX(self.userInfo.frame),CGRectGetMaxY(self.userInfo.frame)+10, 70, 33);
+    self.setting.frame = CGRectMake(132.5,CGRectGetMaxY(self.userInfo.frame)+20, 100, 32);
     [self.setting addTarget:self action:@selector(intoSetting:) forControlEvents:UIControlEventTouchUpInside];
     [self.setting setTitle:@"设置" forState:UIControlStateNormal];
     [self addSubview:_setting];
+    
+    
+    self.circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame), 52, 52)];
+    self.circleImage.backgroundColor = [UIColor clearColor];
+    self.circleImage.image = [UIImage imageNamed:@"/Users/lanou3g/Desktop/素材/图标(png)/对与错/半圆白.png"];
+    [self addSubview:self.circleImage];
+
 }
 
 - (void)signIn:(UIButton *)sender {

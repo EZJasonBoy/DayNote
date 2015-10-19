@@ -36,9 +36,9 @@
     return _moodSelect;
 }
 
-- (UIButton *)weatherShow {
+- (UIImageView *)weatherShow {
     if (!_weatherShow) {
-        _weatherShow = [[UIButton alloc] initWithFrame:CGRectMake(200, 10, 50,32)];
+        _weatherShow = [[UIImageView alloc] initWithFrame:CGRectMake(200, 10, 50,32)];
         _weatherShow.backgroundColor = [UIColor flatPurpleColor];
         [self.backGroundView addSubview:_weatherShow];
     }
@@ -51,12 +51,13 @@
         _editPage.scrollEnabled = YES;
         
         _editPage.returnKeyType = UIReturnKeyDefault;
-        _editPage.keyboardType = UIKeyboardTypeDefault;
+        _editPage.keyboardType = UIKeyboardTypeNamePhonePad;
         _editPage.textAlignment = NSTextAlignmentLeft;
         _editPage.font = [UIFont fontWithName:@"Melno" size:30];
         _editPage.dataDetectorTypes = UIDataDetectorTypeAll;
-        
-        
+        _editPage.font = [UIFont fontWithName:@"Menlo" size:14];
+        _editPage.backgroundColor = [UIColor flatWhiteColor];
+        _editPage.textContainer.lineBreakMode = NSLineBreakByClipping;
         [self.backGroundView addSubview:_editPage];
         
     }

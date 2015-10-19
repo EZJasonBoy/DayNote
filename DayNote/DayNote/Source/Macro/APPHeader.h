@@ -13,10 +13,11 @@
 //
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
-#import "PageJumpController.h"
+
 // base
 #import "ConversionWithDate.h"
 #import "GetDataTools.h"
+#import "RequestWeatherTools.h"
 
 // code
 //#import "RootTabBarViewController.h"
@@ -26,16 +27,17 @@
 #import "ShareViewController.h"
 #import "AddDiaryViewController.h"
 #import "PopUpBoxViewController.h"
-
+#import "DiaryDetailsViewController.h"
 // model
-#import "AllMyDiary.h"
+#import "DayNote.h"
 
 // View
 #import "DiaryListTableViewCell.h"
 #import "PopUpBoxView.h"
 #import "AddDiaryView.h"
+#import "DiaryDetailsView.h"
 
-// net
+
 
 
 

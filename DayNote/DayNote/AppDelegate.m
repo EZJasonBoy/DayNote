@@ -36,6 +36,7 @@
     
     UITabBarController *mainTBC = [[UITabBarController alloc] init];
     [mainTBC.tabBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]]];
+    [mainTBC.tabBar setShadowImage:[UIImage imageFromColor:[UIColor clearColor]]];
     mainTBC.viewControllers = @[myDiaryNC, calendarNC, placeholder,moodNC, shareNC];
     mainTBC.tabBar.layer.borderColor = [UIColor whiteColor].CGColor;
     
@@ -50,16 +51,17 @@
     
     FUIButton *addDiary = [FUIButton buttonWithType:UIButtonTypeCustom];
     
-    [addDiary setFrame:CGRectMake(172, -23, 46, 46)];
+    [addDiary setFrame:CGRectMake(172, -10, 46, 46)];
     CGPoint center = addDiary.center;
     center.x = self.window.center.x;
     addDiary.center = center;
-    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColor]] forState:UIControlStateNormal];
-    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatMintColorDark]] forState:UIControlStateHighlighted];
+    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColorDark]] forState:UIControlStateNormal];
+    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]] forState:UIControlStateHighlighted];
     [addDiary.layer setCornerRadius:23];
     [addDiary setClipsToBounds:YES];
-    [addDiary setImage:[UIImage imageNamed:@"/Users/lanou3g/Desktop/13133775(小).png"] forState:UIControlStateNormal];
-    [addDiary setImage:[UIImage imageNamed:@"/Users/lanou3g/Desktop/13133775(小).png"] forState:UIControlStateHighlighted];
+    addDiary.userInteractionEnabled = YES;
+    [addDiary setImage:[UIImage imageNamed:@"13133775(小)"] forState:UIControlStateNormal];
+    [addDiary setImage:[UIImage imageNamed:@"13133775(小)"] forState:UIControlStateHighlighted];
     [addDiary addTarget:self action:@selector(addMyDiary:) forControlEvents:UIControlEventTouchUpInside];
     [mainTBC.tabBar addSubview:addDiary];
     
@@ -73,8 +75,10 @@
 }
 
 - (void)addMyDiary:(UIButton *)sender {
-    
-    
+    AddDiaryViewController *addDiary = [[AddDiaryViewController alloc] init];
+    addDiary.contentDate = [NSDate date];
+    addDiary.type = ADDTYPEInsert;
+    [self.window.rootViewController presentViewController:addDiary animated:YES completion:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

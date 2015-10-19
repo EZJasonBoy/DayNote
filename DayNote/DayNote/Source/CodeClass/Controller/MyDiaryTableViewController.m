@@ -9,23 +9,30 @@
 #import "MyDiaryTableViewController.h"
 
 
-@interface MyDiaryTableViewController ()
+@interface MyDiaryTableViewController () 
 
 @property (nonatomic, strong) PopUpBoxViewController *popUpBoxVC;
-@property (nonatomic, strong) UIView *view1;
 
 @end
 
 @implementation MyDiaryTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self.tableView registerClass:[DiaryListTableViewCell class] forCellReuseIdentifier:@"diary"];
     [self p_setNavigationBar];
+   
+   
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    if (_popUpBoxVC == nil) {
+        _popUpBoxVC = [[PopUpBoxViewController alloc] init];
+        [self.tableView addSubview:_popUpBoxVC.view];
+    }
+    
     self.diaryGroup =  [[GetDataTools shareGetDataTool] descendingDataArray].mutableCopy;
     [self.tableView reloadData];
 }
@@ -39,41 +46,39 @@
    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(popupList:)];
     
-    self.popUpBoxVC = [[PopUpBoxViewController alloc] init];
-    
-    [self.tableView addSubview:_popUpBoxVC.view];
+    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageFromColor:[UIColor clearColor]]];
 }
 
 - (void)searchMyDiary:(UIBarButtonItem *)sender {
-    AddDiaryViewController *writeDiary = [[AddDiaryViewController alloc] init];
-    writeDiary.contentDate = [NSDate dateWithTimeIntervalSinceNow:0];
-    [self presentViewController:writeDiary animated:YES completion:nil];
+   
 }
 
 - (void)popupList:(UIBarButtonItem *)sender {
     static BOOL isTouch = NO;
     if (isTouch == NO) {
-        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.99 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseIn animations:^{
+   
+        [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
             [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"ic_menuRotated"]];
             CGRect rect = self.popUpBoxVC.view.frame;
-            rect.origin.y = 0.1;
+            rect.origin.y = 0;
             
             self.popUpBoxVC.view.frame = rect;
-        } completion:^(BOOL finished) {
             
-        }];
+        } completion:nil];
+        
     }else {
-        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1.2 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseIn animations:^{
+       
+        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
             [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"ic_menu"]];
             CGRect rect = self.popUpBoxVC.view.frame;
-            rect.origin.y = -623;
+            rect.origin.y = -556;
             
             self.popUpBoxVC.view.frame = rect;
-        } completion:^(BOOL finished) {
+           
+        } completion:nil];
         
-        }];
-
     }
     isTouch = !isTouch;
 }
@@ -101,11 +106,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DiaryListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"diary" forIndexPath:indexPath];
-  
+    
     // Configure the cell...
-    cell.weatherLabel.text = @"天气";
-    cell.moodLabel.text = @"心情";
-    cell.detailsText.text = ((AllMyDiary *)self.diaryGroup[indexPath.section]).diaryBody;
+    cell.weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", ((DayNote *)self.diaryGroup[indexPath.section]).weatherImage]];
+    cell.moodImageView.image = nil;
+    cell.detailsText.text = ((DayNote *)self.diaryGroup[indexPath.section]).diaryBody;
     CGFloat height = [self heightForString:cell.detailsText.text];
     if (height <= 100) {
          cell.detailsText.frame = CGRectMake(CGRectGetMinX(cell.detailsText.frame), CGRectGetMinY(cell.detailsText.frame), CGRectGetWidth(cell.detailsText.frame), height);
@@ -118,15 +123,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self heightForString:((AllMyDiary *)self.diaryGroup[indexPath.section]).diaryBody] > 100) {
+    if ([self heightForString:((DayNote *)self.diaryGroup[indexPath.section]).diaryBody] > 100) {
         return 151;
     }else {
-        return 51+[self heightForString:((AllMyDiary *)self.diaryGroup[indexPath.section]).diaryBody];
+        return 51+[self heightForString:((DayNote *)self.diaryGroup[indexPath.section]).diaryBody];
     }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *str = [[ConversionWithDate shareDateConversion] getStringWithDate:((AllMyDiary *)self.diaryGroup[section]).contentDate type:GZWDateFormatTypeConnector];
+    NSString *str = [[ConversionWithDate shareDateConversion] getStringWithDate:((DayNote *)self.diaryGroup[section]).contentDate type:GZWDateFormatTypeConnector];
     return str;
 }
 
@@ -144,7 +149,7 @@
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    AllMyDiary *amd = self.diaryGroup[indexPath.section];
+    DayNote *amd = self.diaryGroup[indexPath.section];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 
         [self.diaryGroup removeObjectAtIndex:indexPath.section];
@@ -152,8 +157,16 @@
         [[GetDataTools shareGetDataTool] deleteDataWithDate:amd.createDate];
         // 删除cell
         [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-
     } 
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DiaryDetailsViewController *DDVC = [[DiaryDetailsViewController alloc] init];
+    DDVC.hidesBottomBarWhenPushed = YES;
+    DDVC.diaryIndex = indexPath.section;
+    [self.navigationController pushViewController:DDVC animated:YES];
+    DDVC.hidesBottomBarWhenPushed = NO;
 }
 
 - (CGFloat)heightForString:(NSString *)aString {
@@ -164,29 +177,5 @@
     
     return rect.size.height;
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

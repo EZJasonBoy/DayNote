@@ -34,8 +34,8 @@ static GetDataTools *tools = nil;
     self.context = delegate.managedObjectContext;
 }
 
-- (BOOL)addDiaryWithModel:(AllMyDiary *)diary {
-    AllMyDiary *tempDiary = [NSEntityDescription insertNewObjectForEntityForName:@"AllMyDiary" inManagedObjectContext:self.context];
+- (BOOL)addDiaryWithModel:(DayNote *)diary {
+    DayNote *tempDiary = [NSEntityDescription insertNewObjectForEntityForName:@"AllMyDiary" inManagedObjectContext:self.context];
     tempDiary = diary;
     
     NSError *error;
@@ -46,12 +46,16 @@ static GetDataTools *tools = nil;
     return YES;
 }
 
-- (BOOL)addDiaryWithModel:(NSDate *)contentDate create:(NSDate *)createDate details:(NSString *)diaryBody {
-    AllMyDiary *tempDiary = [NSEntityDescription insertNewObjectForEntityForName:@"AllMyDiary" inManagedObjectContext:self.context];
+- (BOOL)addDiaryForContentDate:(NSDate *)contentDate Create:(NSDate *)createDate Details:(NSString *)diaryBody Weather:(NSString *)weather WeatherImage:(NSString *)weatherImage {
+    
+    DayNote *tempDiary = [NSEntityDescription insertNewObjectForEntityForName:@"DayNote" inManagedObjectContext:self.context];
     tempDiary.contentDate = contentDate;
     tempDiary.createDate = createDate;
     tempDiary.diaryBody = diaryBody;
-    
+//    tempDiary.myMood = 
+//    tempDiary.myMoodImage = 
+    tempDiary.weather = weather;
+    tempDiary.weatherImage = weatherImage;
     NSError *error;
     if (![self.context save:&error]) {
         return NO;
@@ -63,7 +67,7 @@ static GetDataTools *tools = nil;
 - (NSArray *)selectAllData {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AllMyDiary" inManagedObjectContext:self.context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DayNote" inManagedObjectContext:self.context];
     [request setEntity:entity];
     
     NSError *error;
@@ -83,12 +87,34 @@ static GetDataTools *tools = nil;
     return tempArray;
 }
 
+- (NSArray *)selectDataWithIndex:(NSInteger)index {
+    NSArray *array =[NSArray arrayWithObjects:(DayNote *)self.dataArray[index], nil];
+    return array;
+}
+
 - (BOOL)deleteDataWithDate:(NSDate *)aDate {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"AllMyDiary"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DayNote"];
     request.predicate = [NSPredicate predicateWithFormat:@"createDate = %@", aDate];
     NSError *error;
     NSArray *tempArray = [self.context executeFetchRequest:request error:&error];
     [self.context deleteObject:tempArray[0]];
+    
+    if (![self.context save:&error]) {
+        return YES;
+    }else {
+        return NO;
+    }
+}
+
+- (BOOL)updateDataWithCreateDate:(NSDate *)aDate ForDetails:(NSString *)diaryBody {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DayNote"];
+    request.predicate = [NSPredicate predicateWithFormat:@"createDate = %@", aDate];
+    
+    NSError *error;
+    NSArray *array = [self.context executeFetchRequest:request error:&error];
+    for (DayNote *data in array) {
+        data.diaryBody = diaryBody;
+    }
     
     if (![self.context save:&error]) {
         return YES;

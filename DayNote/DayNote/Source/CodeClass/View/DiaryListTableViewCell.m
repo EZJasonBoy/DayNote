@@ -21,6 +21,7 @@
 - (UILabel *)weatherLabel {
     if (!_weatherLabel) {
         _weatherLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 4, 40, 33)];
+        _weatherLabel.text = @"天气";
         [self addSubview:_weatherLabel];
     }
     return _weatherLabel;
@@ -37,6 +38,7 @@
 - (UILabel *)moodLabel {
     if (!_moodLabel) {
         _moodLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.weatherImageView.frame)+20, 4, 40, 33)];
+        _moodLabel.text = @"心情";
         [self addSubview:_moodLabel];
     }
     return _moodLabel;

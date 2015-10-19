@@ -24,7 +24,7 @@
 @property (nonatomic, strong) UIView *backGroundView;
 @property (nonatomic, strong) UILabel *datelabel;
 @property (nonatomic, strong) UIButton *moodSelect;
-@property (nonatomic, strong) UIButton *weatherShow;
+@property (nonatomic, strong) UIImageView *weatherShow;
 
 @property (nonatomic, strong) UITextView *editPage;
 

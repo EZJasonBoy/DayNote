@@ -17,7 +17,7 @@
 @implementation PopUpBoxViewController
 
 - (void)loadView {
-    self.popUpBox = [[PopUpBoxView alloc] initWithFrame:CGRectMake(0, -623, 375, 623)];
+    self.popUpBox = [[PopUpBoxView alloc] initWithFrame:CGRectMake(0, -623, 375, 556)];
     self.view = _popUpBox;
 }
 
@@ -30,6 +30,11 @@
 
     self.popUpBox.layer.cornerRadius = 2;
     self.popUpBox.signIn.hidden = NO;
+    
+    CGPoint center = self.popUpBox.circleImage.center;
+    center.x = self.popUpBox.center.x;
+    center.y = self.popUpBox.frame.size.height+11;
+    self.popUpBox.circleImage.center = center;
 }
 
 - (void)signIn {

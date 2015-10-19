@@ -13,8 +13,16 @@
 
 + (instancetype)shareGetDataTool;
 
-- (BOOL)addDiaryWithModel:(NSDate *)contentDate create:(NSDate *)createDate details:(NSString *)diaryBody;
+- (BOOL)addDiaryForContentDate:(NSDate *)contentDate Create:(NSDate *)createDate Details:(NSString *)diaryBody Weather:(NSString *)weather WeatherImage:(NSString *)weatherImage;
+
+- (BOOL)updateDataWithCreateDate:(NSDate *)aDate ForDetails:(NSString *)diaryBody;
+
 - (NSArray *)selectAllData;
+
 - (NSArray *)descendingDataArray;
+
+- (NSArray *)selectDataWithIndex:(NSInteger)index;
+
 - (BOOL)deleteDataWithDate:(NSDate *)aDate;
+
 @end
