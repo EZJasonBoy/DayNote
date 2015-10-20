@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+
+
 @interface AppDelegate ()
 
 @end
@@ -21,7 +23,7 @@
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-//    
+    
     MyDiaryTableViewController *myDiaryTVC = [[MyDiaryTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     UINavigationController *myDiaryNC = [[UINavigationController alloc] initWithRootViewController:myDiaryTVC];
     CalendarViewController *calendarVC = [[CalendarViewController alloc] init];
@@ -31,54 +33,54 @@
     ShareViewController *shareVC = [[ShareViewController alloc] init];
     UINavigationController *shareNC = [[UINavigationController alloc] initWithRootViewController:shareVC];
     
-    UIViewController *placeholder = [[UIViewController alloc] init];
+    self.mainTBC = [YALFoldingTabBarController shareFoldingTabBar];
+
+    self.mainTBC.viewControllers = @[myDiaryNC, calendarNC, moodNC, shareNC];
+
+    //prepare leftBarItems
+    YALTabBarItem *item1 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"diary"]
+                                                      leftItemImage:[UIImage imageNamed:@"search_icon"]
+                                                     rightItemImage:[UIImage imageNamed:@"edit_icon"]];
     
     
-    UITabBarController *mainTBC = [[UITabBarController alloc] init];
-    [mainTBC.tabBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]]];
-    [mainTBC.tabBar setShadowImage:[UIImage imageFromColor:[UIColor clearColor]]];
-    mainTBC.viewControllers = @[myDiaryNC, calendarNC, placeholder,moodNC, shareNC];
-    mainTBC.tabBar.layer.borderColor = [UIColor whiteColor].CGColor;
+    YALTabBarItem *item2 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"Calendar"]
+                                                      leftItemImage:nil
+                                                     rightItemImage:[UIImage imageNamed:@"edit_icon"]];
     
-    myDiaryNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的日记" image:nil tag:1];
-    calendarNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"回忆" image:nil tag:2];
-    moodNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"心情" image:nil tag:3];
-    shareNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"分享" image:nil tag:4];
+    self.mainTBC.leftBarItems = @[item1, item2];
     
-    placeholder.tabBarItem.enabled = NO;
+    //prepare rightBarItems
+    YALTabBarItem *item3 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"chats_icon"]
+                                                      leftItemImage:nil
+                                                     rightItemImage:nil];
     
     
+    YALTabBarItem *item4 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@""]
+                                                      leftItemImage:[UIImage imageNamed:@"search_icon"]
+                                                     rightItemImage:[UIImage imageNamed:@"new_chat_icon"]];
     
-    FUIButton *addDiary = [FUIButton buttonWithType:UIButtonTypeCustom];
+    self.mainTBC.rightBarItems = @[item3, item4];
     
-    [addDiary setFrame:CGRectMake(172, -10, 46, 46)];
-    CGPoint center = addDiary.center;
-    center.x = self.window.center.x;
-    addDiary.center = center;
-    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColorDark]] forState:UIControlStateNormal];
-    [addDiary setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]] forState:UIControlStateHighlighted];
-    [addDiary.layer setCornerRadius:23];
-    [addDiary setClipsToBounds:YES];
-    addDiary.userInteractionEnabled = YES;
-    [addDiary setImage:[UIImage imageNamed:@"13133775(小)"] forState:UIControlStateNormal];
-    [addDiary setImage:[UIImage imageNamed:@"13133775(小)"] forState:UIControlStateHighlighted];
-    [addDiary addTarget:self action:@selector(addMyDiary:) forControlEvents:UIControlEventTouchUpInside];
-    [mainTBC.tabBar addSubview:addDiary];
+    self.mainTBC.centerButtonImage = [UIImage imageNamed:@"plus_icon"];
     
+    self.mainTBC.selectedIndex = 0;
+    
+    //customize tabBarView
+    self.mainTBC.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;
+    self.mainTBC.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset;
+    self.mainTBC.tabBarView.backgroundColor = [UIColor flatBlueColor];
+    self.mainTBC.tabBarView.tabBarColor = [UIColor flatBlueColorDark];
+    self.mainTBC.tabBarViewHeight = YALTabBarViewDefaultHeight;
+    self.mainTBC.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets;
+    self.mainTBC.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets;
+        
     
     [AVOSCloud setApplicationId:@"J9wH2THYLIMQTO5CEtOnEWpj"
                       clientKey:@"yrkBJhd1KKlKCPrbFh8q2cIu"];
     
-    self.window.rootViewController = mainTBC;
+    self.window.rootViewController = _mainTBC;
     
     return YES;
-}
-
-- (void)addMyDiary:(UIButton *)sender {
-    AddDiaryViewController *addDiary = [[AddDiaryViewController alloc] init];
-    addDiary.contentDate = [NSDate date];
-    addDiary.type = ADDTYPEInsert;
-    [self.window.rootViewController presentViewController:addDiary animated:YES completion:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -159,7 +161,8 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES};
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         NSLog(@"Unresolvederror %@, %@", error, [error userInfo]);
         abort();
     }   

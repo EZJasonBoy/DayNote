@@ -52,8 +52,8 @@
 }
 - (UILabel *)detailsText {
     if (!_detailsText) {
-        _detailsText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.weatherLabel.frame), CGRectGetMaxY(self.weatherImageView.frame)+2, 339, 32)];
-        _detailsText.numberOfLines = 0;
+        _detailsText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.weatherLabel.frame), CGRectGetMaxY(self.weatherImageView.frame)+2, 339, 60)];
+        _detailsText.numberOfLines = 2;
         _detailsText.lineBreakMode = NSLineBreakByCharWrapping;
         [self addSubview:_detailsText];
     }

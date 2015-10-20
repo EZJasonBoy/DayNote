@@ -22,16 +22,7 @@
 }
 // 设置导航栏
 - (void)p_setNavigationBar {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchMyDiary:)];
     
-    self.navigationItem.title = @"回忆";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageFromColor:[UIColor colorWithRed:0.663 green:0.616 blue:1.000 alpha:1.000]] forBarMetrics:UIBarMetricsDefault];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(popupList:)];
-    
-    self.popUpBoxVC = [[PopUpBoxViewController alloc] init];
-    
-    [self.view addSubview:_popUpBoxVC.view];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

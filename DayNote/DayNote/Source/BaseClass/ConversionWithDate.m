@@ -48,7 +48,7 @@ static ConversionWithDate *tools = nil;
             [dateFormat setDateFormat:@"hh:mm:ss"];
             break;
         case GZWDateFormatTypeDateTime:
-            [dateFormat setDateFormat:@"YYYY-MM-dd"];
+            [dateFormat setDateFormat:@"YYYY-MM-dd_hh:mm:ss"];
             break;
         default:
             [dateFormat setDateFormat:@"YYYY-MM-dd"];

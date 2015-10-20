@@ -9,9 +9,9 @@
 #import "MyDiaryTableViewController.h"
 
 
-@interface MyDiaryTableViewController () 
+@interface MyDiaryTableViewController () <YALTabBarInteracting>
 
-@property (nonatomic, strong) PopUpBoxViewController *popUpBoxVC;
+@property (nonatomic, strong) PopUpBoxView *popUpBox;
 
 @end
 
@@ -20,26 +20,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.sectionIndexBackgroundColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar addSubview:[[UIView alloc] init]];
+    _popUpBox = [[PopUpBoxView alloc] initWithFrame:CGRectMake(-188, -354, 375, 667)];
+    _popUpBox.backgroundColor = [UIColor flatBlueColor];
+    self.popUpBox.transform = CGAffineTransformMakeRotation(-M_PI);
+    self.popUpBox.layer.anchorPoint = CGPointMake(0, 0);
+
+//    [[UIApplication sharedApplication].keyWindow insertSubview:_popUpBoxVC.view aboveSubview:self.tableView];
+    [self.navigationController.navigationBar insertSubview:_popUpBox atIndex:0];
     
     [self.tableView registerClass:[DiaryListTableViewCell class] forCellReuseIdentifier:@"diary"];
     [self p_setNavigationBar];
    
-   
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if (_popUpBoxVC == nil) {
-        _popUpBoxVC = [[PopUpBoxViewController alloc] init];
-        [self.tableView addSubview:_popUpBoxVC.view];
-    }
-    
+    [YALFoldingTabBarController shareFoldingTabBar].tabBarView.hidden = NO;
     self.diaryGroup =  [[GetDataTools shareGetDataTool] descendingDataArray].mutableCopy;
     [self.tableView reloadData];
 }
 
 // 设置导航栏
 - (void)p_setNavigationBar {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchMyDiary:)];
     
     self.navigationItem.title = @"my diary";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]] forBarMetrics:UIBarMetricsDefault];
@@ -50,34 +53,42 @@
 }
 
 - (void)searchMyDiary:(UIBarButtonItem *)sender {
-   
+    
 }
 
 - (void)popupList:(UIBarButtonItem *)sender {
     static BOOL isTouch = NO;
     if (isTouch == NO) {
    
-        [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
             [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"ic_menuRotated"]];
-            CGRect rect = self.popUpBoxVC.view.frame;
-            rect.origin.y = 0;
             
-            self.popUpBoxVC.view.frame = rect;
+//            CGRect rect = self.popUpBoxVC.view.frame;
+//            rect.origin.y = 32;
+//
+//            self.popUpBoxVC.view.frame = rect;
+            self.popUpBox.transform = CGAffineTransformRotate(self.popUpBox.transform, M_PI);
             
-        } completion:nil];
-        
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:1 animations:^{
+                self.tabBarController.tabBar.hidden = YES;
+            }];
+        }];
+
     }else {
        
-        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
             [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"ic_menu"]];
-            CGRect rect = self.popUpBoxVC.view.frame;
-            rect.origin.y = -556;
+//            CGRect rect = self.popUpBoxVC.view.frame;
+//            rect.origin.y = -625;
+//            self.popUpBoxVC.view.frame = rect;
+            self.popUpBox.transform = CGAffineTransformRotate(self.popUpBox.transform, -M_PI);
             
-            self.popUpBoxVC.view.frame = rect;
-           
-        } completion:nil];
+        } completion:^(BOOL finished) {
+            
+        }];
         
     }
     isTouch = !isTouch;
@@ -112,19 +123,18 @@
     cell.moodImageView.image = nil;
     cell.detailsText.text = ((DayNote *)self.diaryGroup[indexPath.section]).diaryBody;
     CGFloat height = [self heightForString:cell.detailsText.text];
-    if (height <= 100) {
+    if (height <= 50) {
          cell.detailsText.frame = CGRectMake(CGRectGetMinX(cell.detailsText.frame), CGRectGetMinY(cell.detailsText.frame), CGRectGetWidth(cell.detailsText.frame), height);
     }else {
-        cell.detailsText.frame = CGRectMake(CGRectGetMinX(cell.detailsText.frame), CGRectGetMinY(cell.detailsText.frame), CGRectGetWidth(cell.detailsText.frame), 100);
+        cell.detailsText.frame = CGRectMake(CGRectGetMinX(cell.detailsText.frame), CGRectGetMinY(cell.detailsText.frame), CGRectGetWidth(cell.detailsText.frame), 50);
     }
    
-    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self heightForString:((DayNote *)self.diaryGroup[indexPath.section]).diaryBody] > 100) {
-        return 151;
+    if ([self heightForString:((DayNote *)self.diaryGroup[indexPath.section]).diaryBody] > 60) {
+        return 92;
     }else {
         return 51+[self heightForString:((DayNote *)self.diaryGroup[indexPath.section]).diaryBody];
     }
@@ -134,7 +144,6 @@
     NSString *str = [[ConversionWithDate shareDateConversion] getStringWithDate:((DayNote *)self.diaryGroup[section]).contentDate type:GZWDateFormatTypeConnector];
     return str;
 }
-
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -162,11 +171,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [YALFoldingTabBarController shareFoldingTabBar].tabBarView.hidden = YES;
+    
     DiaryDetailsViewController *DDVC = [[DiaryDetailsViewController alloc] init];
-    DDVC.hidesBottomBarWhenPushed = YES;
     DDVC.diaryIndex = indexPath.section;
     [self.navigationController pushViewController:DDVC animated:YES];
-    DDVC.hidesBottomBarWhenPushed = NO;
+    
 }
 
 - (CGFloat)heightForString:(NSString *)aString {
@@ -177,5 +187,22 @@
     
     return rect.size.height;
 }
+
+#pragma mark - YAL 三方
+- (void)extraLeftItemDidPress {
+    
+}
+// 写日记
+- (void)extraRightItemDidPress {
+    AddDiaryViewController *addDiary = [[AddDiaryViewController alloc] init];
+    addDiary.modalPresentationStyle = UIModalPresentationCustom;
+    addDiary.transitioningDelegate = self;
+    addDiary.contentDate = [NSDate date];
+    addDiary.type = ADDTYPEInsert;
+    [self.navigationController presentViewController:addDiary animated:YES completion:nil];
+}
+
+
+
 
 @end

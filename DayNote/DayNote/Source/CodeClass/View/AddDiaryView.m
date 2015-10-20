@@ -46,7 +46,7 @@
 }
 - (UITextView *)editPage {
     if (!_editPage) {
-        _editPage = [[UITextView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.datelabel.frame)-10, CGRectGetMaxY(self.datelabel.frame)+10, CGRectGetWidth(self.frame), 319)];
+        _editPage = [[UITextView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.datelabel.frame)-10, CGRectGetMaxY(self.datelabel.frame)+10, CGRectGetWidth(self.frame), 299)];
         _editPage.editable = YES;
         _editPage.scrollEnabled = YES;
         
@@ -64,18 +64,35 @@
     return _editPage;
 }
 
+- (UIImageView *)myImage {
+    if (!_myImage) {
+        _myImage = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.editPage.frame)+5, CGRectGetMaxY(self.editPage.frame)+10, 150, 150)];
+        [self.backGroundView addSubview:_myImage];
+    }
+    return _myImage;
+}
+
 - (UIToolbar *)toolBar {
     if (!_toolBar) {
-        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame)-44, 375, 44)];
+        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame)-64, 375, 44)];
         [_toolBar setBarStyle:UIBarStyleDefault];
         
         UIBarButtonItem * button1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"wrong"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
-        UIBarButtonItem * button2 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        UIBarButtonItem * button3 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        UIBarButtonItem * button4 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        UIBarButtonItem * button5 =[[UIBarButtonItem  alloc]initWithBarButtonSystemItem:                                        UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        
+        UIBarButtonItem *place1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        UIBarButtonItem * button2 =[[UIBarButtonItem  alloc]initWithImage:[UIImage imageNamed:@"text_minus"] style:UIBarButtonItemStylePlain target:self action:@selector(zoomOutFont:)];
+        UIBarButtonItem * button3 =[[UIBarButtonItem  alloc]initWithImage:[UIImage imageNamed:@"text_plus"] style:UIBarButtonItemStylePlain target:self action:@selector(zoomInFont:)];
+        UIBarButtonItem *place2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem * button4 =[[UIBarButtonItem  alloc]initWithImage:[UIImage imageNamed:@"sound"] style:UIBarButtonItemStylePlain target:self action:@selector(record:)];
+        
+        UIBarButtonItem *place3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        UIBarButtonItem * button5 =[[UIBarButtonItem  alloc]initWithImage:[UIImage imageNamed:@"picture"] style:UIBarButtonItemStylePlain target:self action:@selector(choosePhoto:)];
+        UIBarButtonItem *place4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
         UIBarButtonItem * button6 =[[UIBarButtonItem  alloc] initWithImage:[UIImage imageNamed:@"check"] style:UIBarButtonItemStylePlain target:self action:@selector(ok:)];
-        [_toolBar setItems:@[button1,button2,button3,button4,button5,button6]];
+        [_toolBar setItems:@[button1,place1,button2,button3,place2,button4,place3,button5,place4,button6]];
         [self.backGroundView addSubview:_toolBar];
     }
     return _toolBar;
@@ -87,6 +104,22 @@
 
 - (void)ok:(UIBarButtonItem *)sender {
     [self.delegate backToView:YES];
+}
+
+- (void)record:(UIBarButtonItem *)sender {
+    [self.delegate recording:sender];
+}
+
+- (void)zoomOutFont:(UIBarButtonItem *)sender {
+    [self.delegate zoomInOrOutFont:NO];
+}
+
+- (void)zoomInFont:(UIBarButtonItem *)sender {
+    [self.delegate zoomInOrOutFont:YES];
+}
+
+- (void)choosePhoto:(UIBarButtonItem *)sender {
+    [self.delegate choosePhotos];
 }
 
 @end

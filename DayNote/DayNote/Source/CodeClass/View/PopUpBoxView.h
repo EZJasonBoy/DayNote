@@ -23,11 +23,11 @@
 
 @property (nonatomic, assign) id<PopUpBoxViewDelegate>delegate;
 
+@property (nonatomic, strong) UIButton *menu;
 @property (nonatomic, strong) UIButton *signIn;
 @property (nonatomic, strong) UIButton *userInfo;
 @property (nonatomic, strong) UIButton *setting;
 
-@property (nonatomic, strong) UIImageView *circleImage;
 
 
 @end

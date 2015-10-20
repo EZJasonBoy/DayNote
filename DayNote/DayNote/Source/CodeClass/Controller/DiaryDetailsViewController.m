@@ -8,9 +8,12 @@
 
 #import "DiaryDetailsViewController.h"
 
-@interface DiaryDetailsViewController () <DiaryDetailsViewDelegate>
+@interface DiaryDetailsViewController () <DiaryDetailsViewDelegate, UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) DiaryDetailsView *diaryDetails;
 @property (nonatomic, strong) DayNote *myDiary;
+
+@property (nonatomic, strong) JTMaterialTransition *transition;
+
 @end
 
 @implementation DiaryDetailsViewController
@@ -26,6 +29,7 @@
     // Do any additional setup after loading the view.
     self.diaryDetails.delegate = self;
     self.diaryDetails.backgroundColor = [UIColor whiteColor];
+    [self createTransition];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,7 +39,7 @@
 
 - (void)setData {
     self.navigationItem.title = [[ConversionWithDate shareDateConversion] getStringWithDate:_myDiary.contentDate type:GZWDateFormatTypeWord];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"＜111" style:UIBarButtonItemStylePlain target:self action:@selector(backToMain:)];
     self.diaryDetails.weatherImage.image = [UIImage imageNamed:self.myDiary.weatherImage];
     
     self.diaryDetails.moodImage.image = nil;
@@ -44,19 +48,25 @@
     self.diaryDetails.textLabel.text = _myDiary.diaryBody;
     [self.diaryDetails.textLabel sizeToFit];
     
-    self.diaryDetails.myImage.image = nil;
+    self.diaryDetails.myImage.image = [UIImage imageNamed:[[FileManagerTools shareFileManager] getImagePathWithName:_myDiary.diaryImage]];
     
     self.diaryDetails.editButton.backgroundColor = [UIColor flatBlueColor];
+}
+- (void)backToMain:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)writeDiary {
     AddDiaryViewController *add = [[AddDiaryViewController alloc] init];
+    add.modalPresentationStyle = UIModalPresentationCustom;
+    add.transitioningDelegate = self;
     add.type = ADDTYPEAdditional;
     add.hidesBottomBarWhenPushed = YES;
     add.diaryText = self.myDiary.diaryBody;
     add.contentDate = self.myDiary.contentDate;
     add.createDate = self.myDiary.createDate;
     add.mood = nil;
+
     add.weatherImage = self.myDiary.weatherImage;
     [self presentViewController:add animated:YES completion:nil];
 }
@@ -66,6 +76,24 @@
     
 }
 
+#pragma mark - Transition
 
+- (void)createTransition
+{
+    self.transition = [[JTMaterialTransition alloc] initWithAnimatedView:self.diaryDetails.editButton];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    self.transition.reverse = NO;
+    return self.transition;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    self.transition.reverse = YES;
+    return self.transition;
+}
 
 @end

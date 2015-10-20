@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyDiaryTableViewController : UITableViewController
+@interface MyDiaryTableViewController : UITableViewController 
 
 @property (nonatomic, strong) NSMutableArray *diaryGroup;
 

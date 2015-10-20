@@ -17,28 +17,25 @@
 @implementation PopUpBoxViewController
 
 - (void)loadView {
-    self.popUpBox = [[PopUpBoxView alloc] initWithFrame:CGRectMake(0, -623, 375, 556)];
+    self.popUpBox = [[PopUpBoxView alloc] initWithFrame:CGRectMake(-188, -354, 375, 667)];
+    self.popUpBox.transform = CGAffineTransformMakeRotation(-M_PI);
+    self.popUpBox.layer.anchorPoint = CGPointMake(0, 0);
     self.view = _popUpBox;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     self.popUpBox.delegate = self;
     self.popUpBox.backgroundColor = [UIColor flatBlueColor];
-
     self.popUpBox.layer.cornerRadius = 2;
-    self.popUpBox.signIn.hidden = NO;
     
-    CGPoint center = self.popUpBox.circleImage.center;
-    center.x = self.popUpBox.center.x;
-    center.y = self.popUpBox.frame.size.height+11;
-    self.popUpBox.circleImage.center = center;
+    
 }
 
 - (void)signIn {
     // 跳转到登陆界面
+    NSLog(@"1234234");
 }
 
 - (void)intoUserCenter {

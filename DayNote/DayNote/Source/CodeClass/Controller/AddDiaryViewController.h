@@ -21,5 +21,6 @@ typedef NS_ENUM(NSInteger, ADDTYPE) {
 @property (nonatomic, strong) NSString *diaryText;
 @property (nonatomic, strong) NSString *mood;
 @property (nonatomic, strong) NSString *weatherImage;
+@property (nonatomic, strong) NSString *diaryImage;
 
 @end

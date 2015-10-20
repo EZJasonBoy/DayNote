@@ -19,5 +19,12 @@
 
 // 解析
 
+// tabbar
+#import "YALTabBarItem.h"
+#import "YALFoldingTabBarController.h"
+#import "YALAnimatingTabBarConstants.h"
+#import "YALTabBarInteracting.h"
 
+// 动画
+#import "JTMaterialTransition.h"
 #endif

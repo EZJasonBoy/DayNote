@@ -13,11 +13,17 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self p_setUp];
+        
     }
     return self;
 }
 
 - (void)p_setUp {
+    
+    self.menu = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.menu.frame = CGRectMake(0, 0, 37, 30);
+    [self.menu setImage:[UIImage imageNamed:@"ic_menu"] forState:UIControlStateNormal];
+    [self addSubview:_menu];
     
     self.signIn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.signIn.frame = CGRectMake(132.5,100, 100, 32);
@@ -39,10 +45,7 @@
     [self addSubview:_setting];
     
     
-    self.circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame), 52, 52)];
-    self.circleImage.backgroundColor = [UIColor clearColor];
-    self.circleImage.image = [UIImage imageNamed:@"/Users/lanou3g/Desktop/素材/图标(png)/对与错/半圆白.png"];
-    [self addSubview:self.circleImage];
+ 
 
 }
 

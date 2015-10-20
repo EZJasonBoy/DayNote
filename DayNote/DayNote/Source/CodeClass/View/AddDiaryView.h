@@ -13,6 +13,11 @@
 
 - (void)backToView:(BOOL)isOK;
 
+- (void)recording:(UIBarButtonItem *)sender;
+
+- (void)zoomInOrOutFont:(BOOL)isReduce;
+
+- (void)choosePhotos;
 
 @end
 
@@ -31,4 +36,5 @@
 @property (nonatomic, strong) UIButton *cancel;
 @property (nonatomic, strong) UIButton *ok;
 
+@property (nonatomic, strong) UIImageView *myImage;
 @end

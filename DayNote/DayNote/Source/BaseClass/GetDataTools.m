@@ -46,7 +46,7 @@ static GetDataTools *tools = nil;
     return YES;
 }
 
-- (BOOL)addDiaryForContentDate:(NSDate *)contentDate Create:(NSDate *)createDate Details:(NSString *)diaryBody Weather:(NSString *)weather WeatherImage:(NSString *)weatherImage {
+- (BOOL)addDiaryForContentDate:(NSDate *)contentDate Create:(NSDate *)createDate Details:(NSString *)diaryBody Weather:(NSString *)weather WeatherImage:(NSString *)weatherImage DiaryImage:(NSString *)diaryImage {
     
     DayNote *tempDiary = [NSEntityDescription insertNewObjectForEntityForName:@"DayNote" inManagedObjectContext:self.context];
     tempDiary.contentDate = contentDate;
@@ -56,6 +56,7 @@ static GetDataTools *tools = nil;
 //    tempDiary.myMoodImage = 
     tempDiary.weather = weather;
     tempDiary.weatherImage = weatherImage;
+    tempDiary.diaryImage = diaryImage;
     NSError *error;
     if (![self.context save:&error]) {
         return NO;
@@ -88,7 +89,7 @@ static GetDataTools *tools = nil;
 }
 
 - (NSArray *)selectDataWithIndex:(NSInteger)index {
-    NSArray *array =[NSArray arrayWithObjects:(DayNote *)self.dataArray[index], nil];
+    NSArray *array =[NSArray arrayWithObjects:(DayNote *)[self descendingDataArray][index], nil];
     return array;
 }
 
