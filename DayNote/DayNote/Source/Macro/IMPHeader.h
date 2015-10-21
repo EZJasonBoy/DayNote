@@ -9,7 +9,23 @@
 #ifndef Project_IMPHeader_h
 #define Project_IMPHeader_h
 
-#import "UMSocial.h"
 
+// 颜色
+#import "Chameleon.h"
+#import "FlatUIKit.h"
 
+// 数据库
+#import <AVOSCloud/AVOSCloud.h>
+
+// 解析
+
+// tabbar
+#import "YALTabBarItem.h"
+#import "YALFoldingTabBarController.h"
+#import "YALAnimatingTabBarConstants.h"
+
+#import "YALTabBarInteracting.h"
+
+// 动画
+#import "JTMaterialTransition.h"
 #endif
