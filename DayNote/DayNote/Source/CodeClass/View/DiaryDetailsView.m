@@ -2,7 +2,7 @@
 //  DiaryDetailsView.m
 //  DayNote
 //
-//  Created by lanou3g on 15/10/19.
+//  Created by boluchuling on 15/10/19.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -62,7 +62,7 @@
        
         _editButton.layer.cornerRadius = 20;
         _editButton.clipsToBounds = YES;
-        [_editButton setImage:[UIImage imageNamed:@"edit_23"] forState:UIControlStateNormal];
+        [_editButton setImage:[UIImage imageNamed:@"edit"] forState:UIControlStateNormal];
         
         [_editButton addTarget:self action:@selector(writeDiary:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_editButton];

@@ -2,7 +2,7 @@
 //  DayNote.h
 //  DayNote
 //
-//  Created by lanou3g on 15/10/21.
+//  Created by boluchuling on 15/10/27.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -20,5 +20,6 @@
 @property (nonatomic, retain) NSString * moodImage;
 @property (nonatomic, retain) NSString * weather;
 @property (nonatomic, retain) NSString * weatherImage;
+@property (nonatomic, retain) NSString * userName;
 
 @end

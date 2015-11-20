@@ -2,7 +2,7 @@
 //  ConversionWithDate.m
 //  DayNote
 //
-//  Created by lanou3g on 15/10/17.
+//  Created by boluchuling on 15/10/17.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -23,12 +23,12 @@ static ConversionWithDate *tools = nil;
     return tools;
 }
 
-
+// 字符串变日期
 - (NSDate *)getDateWithString:(NSString *)aString {
     
     return [NSDate date];
 }
-
+// 日期变字符串
 - (NSString *)getStringWithDate:(NSDate *)aDate type:(GZWDateFormatType)aType {
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -49,6 +49,12 @@ static ConversionWithDate *tools = nil;
             break;
         case GZWDateFormatTypeDateTime:
             [dateFormat setDateFormat:@"YYYY-MM-dd_hh:mm:ss"];
+            break;
+        case GZWDateFormatTypeHours:
+            [dateFormat setDateFormat:@"hh"];
+            break;
+        case GZWDateFormatTypeMinute:
+            [dateFormat setDateFormat:@"mm"];
             break;
         default:
             [dateFormat setDateFormat:@"YYYY-MM-dd"];

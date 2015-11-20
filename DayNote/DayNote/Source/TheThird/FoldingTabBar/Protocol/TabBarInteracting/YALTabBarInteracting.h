@@ -8,7 +8,7 @@
 
 @optional
 
-- (void)tabBarViewWillCollapse;
+- (void)tabBarViewWillCollapse:(YALFoldingTabBar *)sender;
 - (void)tabBarViewWillExpand;
 
 - (void)tabBarViewDidCollapse;

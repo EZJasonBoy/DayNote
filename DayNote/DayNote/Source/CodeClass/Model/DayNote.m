@@ -2,7 +2,7 @@
 //  DayNote.m
 //  DayNote
 //
-//  Created by lanou3g on 15/10/21.
+//  Created by boluchuling on 15/10/27.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -19,5 +19,6 @@
 @dynamic moodImage;
 @dynamic weather;
 @dynamic weatherImage;
+@dynamic userName;
 
 @end

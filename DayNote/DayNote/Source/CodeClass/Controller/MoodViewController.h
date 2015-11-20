@@ -2,12 +2,12 @@
 //  MoodViewController.h
 //  DayNote
 //
-//  Created by lanou3g on 15/10/15.
-//  Copyright (c) 2015年 郭兆伟. All rights reserved.
+//  Created by youyou on 15/10/16.
+//  Copyright (c) 2015年 张晓敏. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface MoodViewController : UIViewController
+@interface MoodViewController : UITableViewController
 
 @end

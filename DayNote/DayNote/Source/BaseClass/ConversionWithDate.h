@@ -2,7 +2,7 @@
 //  ConversionWithDate.h
 //  DayNote
 //
-//  Created by lanou3g on 15/10/17.
+//  Created by boluchuling on 15/10/17.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -10,16 +10,16 @@
 
 typedef NS_ENUM(NSInteger, GZWDateFormatType) {
     // 日期组合格式
-    GZWDateFormatTypePoint,
-    GZWDateFormatTypeConnector,
-    GZWDateFormatTypeWord,
-    GZWDateFormatTypeTime,
-    GZWDateFormatTypeDateTime,
-    GZWDateFormatTypeHoursMinute,
-    GZWDateFormatTypeMinuteSeconds,
+    GZWDateFormatTypePoint,// xxx.xxx.xxx
+    GZWDateFormatTypeConnector, // xxx-xxx-xxx
+    GZWDateFormatTypeWord, // xxx年xxx月xxx日
+    GZWDateFormatTypeTime, // xx/xx/xx
+    GZWDateFormatTypeDateTime, // xxx-xxx-xxx_xx/xx/xx
+    GZWDateFormatTypeHoursMinute, // xx/xx
+    GZWDateFormatTypeMinuteSeconds, // xx/xx
     
     // 单个年,月,日
-    GZWDateFormatTypeYear,
+    GZWDateFormatTypeYear, 
     GZWDateFormatTypeMouth,
     GZWDateFormatTypeDay,
     

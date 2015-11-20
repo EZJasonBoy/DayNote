@@ -2,7 +2,7 @@
 //  AddDiaryView.m
 //  DayNote
 //
-//  Created by lanou3g on 15/10/15.
+//  Created by boluchuling on 15/10/15.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -20,7 +20,7 @@
 
 - (UILabel *)datelabel {
     if (!_datelabel) {
-        _datelabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 90,37)];
+        _datelabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.height*30/667, [UIScreen mainScreen].bounds.size.height*10/667, 90,[UIScreen mainScreen].bounds.size.height*37/667)];
         [self.backGroundView addSubview:_datelabel];
     }
     return _datelabel;
@@ -28,7 +28,7 @@
 
 - (UIImageView *)weatherShow {
     if (!_weatherShow) {
-        _weatherShow = [[UIImageView alloc] initWithFrame:CGRectMake(170, 10, 42,37)];
+        _weatherShow = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.datelabel.frame)+[UIScreen mainScreen].bounds.size.height*20/667, CGRectGetMinY(self.datelabel.frame), [UIScreen mainScreen].bounds.size.height*42/667,CGRectGetHeight(self.datelabel.frame))];
         [self.backGroundView addSubview:_weatherShow];
     }
     return _weatherShow;
@@ -36,7 +36,7 @@
 
 - (UILabel *)weatherText {
     if (!_weatherText) {
-        _weatherText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.weatherShow.frame), CGRectGetMinY(self.weatherShow.frame), CGRectGetWidth(self.weatherShow.frame)+20, CGRectGetHeight(self.weatherShow.frame))];
+        _weatherText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.weatherShow.frame), CGRectGetMinY(self.weatherShow.frame), CGRectGetWidth(self.weatherShow.frame)+[UIScreen mainScreen].bounds.size.height*20/667, CGRectGetHeight(self.weatherShow.frame))];
         [self.backGroundView addSubview:_weatherText];
     }
     return _weatherText;
@@ -44,11 +44,11 @@
 
 - (UIButton *)moodSmaile {
     if (!_moodSmaile) {
-        _moodSmaile = [[UIButton alloc] initWithFrame:CGRectMake(280, 10, 42,37)];
+        _moodSmaile = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.height*280/667, [UIScreen mainScreen].bounds.size.height*10/667, [UIScreen mainScreen].bounds.size.height*42/667,[UIScreen mainScreen].bounds.size.height*37/667)];
         _moodSmaile.titleLabel.text = @"高兴";
         _moodSmaile.tag = 1001;
         [_moodSmaile addTarget:self action:@selector(smaile:) forControlEvents:UIControlEventTouchUpInside];
-        [_moodSmaile setImage:[UIImage imageNamed:@"smiley"] forState:UIControlStateNormal];
+        [_moodSmaile setImage:[UIImage imageNamed:@"高兴"] forState:UIControlStateNormal];
         [self.backGroundView addSubview:_moodSmaile];
 
     }
@@ -56,10 +56,10 @@
 }
 - (UIButton *)moodCry {
     if (!_moodCry) {
-        _moodCry = [[UIButton alloc] initWithFrame:CGRectMake(280, 10, 42,37)];
+        _moodCry = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.height*280/667, [UIScreen mainScreen].bounds.size.height*10/667, [UIScreen mainScreen].bounds.size.height*42/667,[UIScreen mainScreen].bounds.size.height*37/667)];
         _moodCry.tag = 1002;
         [_moodCry addTarget:self action:@selector(cry:) forControlEvents:UIControlEventTouchUpInside];
-        [_moodCry setImage:[UIImage imageNamed:@"cry"] forState:UIControlStateNormal];
+        [_moodCry setImage:[UIImage imageNamed:@"难过"] forState:UIControlStateNormal];
         _moodCry.titleLabel.text = @"难过";
         [self.backGroundView addSubview:_moodCry];
     }
@@ -67,10 +67,10 @@
 }
 - (UIButton *)moodFlat {
     if (!_moodFlat) {
-        _moodFlat = [[UIButton alloc] initWithFrame:CGRectMake(280, 10, 42,37)];
+        _moodFlat = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.height*280/667, [UIScreen mainScreen].bounds.size.height*10/667, [UIScreen mainScreen].bounds.size.height*42/667,[UIScreen mainScreen].bounds.size.height*37/667)];
         _moodFlat.tag = 1003;
         [_moodFlat addTarget:self action:@selector(flat:) forControlEvents:UIControlEventTouchUpInside];
-        [_moodFlat setImage:[UIImage imageNamed:@"flat"] forState:UIControlStateNormal];
+        [_moodFlat setImage:[UIImage imageNamed:@"平淡"] forState:UIControlStateNormal];
         _moodFlat.titleLabel.text = @"平淡";
         [self.backGroundView addSubview:_moodFlat];
        
@@ -80,7 +80,7 @@
 
 - (UILabel *)moodText {
     if (!_moodText) {
-        _moodText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.moodFlat.frame), CGRectGetMinY(self.moodFlat.frame), CGRectGetWidth(self.moodFlat.frame)+10, CGRectGetHeight(self.moodFlat.frame))];
+        _moodText = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.moodFlat.frame), CGRectGetMinY(self.moodFlat.frame), CGRectGetWidth(self.moodFlat.frame)+[UIScreen mainScreen].bounds.size.height*10/667, CGRectGetHeight(self.moodFlat.frame))];
         [self.backGroundView addSubview:_moodText];
     }
     return _moodText;
@@ -88,11 +88,9 @@
 
 - (UITextView *)editPage {
     if (!_editPage) {
-        _editPage = [[UITextView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.datelabel.frame)-29, CGRectGetMaxY(self.datelabel.frame)+10, CGRectGetWidth(self.frame), 299)];
+        _editPage = [[UITextView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.datelabel.frame)-[UIScreen mainScreen].bounds.size.height*29/667, CGRectGetMaxY(self.datelabel.frame)+[UIScreen mainScreen].bounds.size.height*10/667, CGRectGetWidth(self.frame), [UIScreen mainScreen].bounds.size.height*299/667)];
         _editPage.editable = YES;
         _editPage.scrollEnabled = YES;
-        
-//        _editPage.returnKeyType = UIReturnKeyDefault;
         _editPage.keyboardType = UIKeyboardTypeDefault;
         _editPage.textAlignment = NSTextAlignmentLeft;
         _editPage.font = [UIFont fontWithName:@"Melno" size:30];
@@ -108,7 +106,7 @@
 
 - (UIImageView *)myImage {
     if (!_myImage) {
-        _myImage = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.editPage.frame)+5, CGRectGetMaxY(self.editPage.frame)+10, 150, 150)];
+        _myImage = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.editPage.frame)+[UIScreen mainScreen].bounds.size.height*5/667, CGRectGetMaxY(self.editPage.frame)+[UIScreen mainScreen].bounds.size.height*10/667, [UIScreen mainScreen].bounds.size.height*150/667, [UIScreen mainScreen].bounds.size.height*150/667)];
         [self.backGroundView addSubview:_myImage];
     }
     return _myImage;
@@ -116,7 +114,7 @@
 
 - (UIToolbar *)toolBar {
     if (!_toolBar) {
-        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame)-64, 375, 44)];
+        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY([UIScreen mainScreen].bounds)* (CGRectGetMaxY(self.frame)-64)/667, CGRectGetWidth([UIScreen mainScreen].bounds), [UIScreen mainScreen].bounds.size.height*44/667)];
         [_toolBar setBarStyle:UIBarStyleDefault];
         
         UIBarButtonItem * button1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"wrong"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];

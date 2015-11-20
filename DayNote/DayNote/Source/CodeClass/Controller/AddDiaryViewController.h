@@ -2,7 +2,7 @@
 //  AddDiaryViewController.h
 //  DayNote
 //
-//  Created by lanou3g on 15/10/15.
+//  Created by boluchuling on 15/10/15.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -10,12 +10,14 @@
 
 typedef NS_ENUM(NSInteger, ADDTYPE) {
     ADDTYPEInsert,
-    ADDTYPEAdditional
+    ADDTYPEAdditional,
+    ADDTYPEWriteUp
 };
 
 @interface AddDiaryViewController : UIViewController
 
 @property (nonatomic, assign) ADDTYPE type;
-@property (nonatomic, assign) NSInteger index;
+//@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) NSDate *contentDate;
 
 @end

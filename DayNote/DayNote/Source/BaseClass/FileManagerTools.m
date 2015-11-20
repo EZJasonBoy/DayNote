@@ -2,7 +2,7 @@
 //  FileManagerTools.m
 //  DayNote
 //
-//  Created by lanou3g on 15/10/20.
+//  Created by boluchuling on 15/10/20.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -25,7 +25,7 @@ static FileManagerTools *tools = nil;
     NSArray *array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return array[0];
 }
-
+// 获取图片路径
 - (NSString *)getImagePathWithName:(NSString *)aName {
     NSString *tempStr = [[[self getPathOfDocument] stringByAppendingPathComponent:@"diaryimage"] stringByAppendingPathComponent:aName];
     return tempStr;

@@ -2,7 +2,7 @@
 //  UIImage+TransformColorAndImage.h
 //  DayNote
 //
-//  Created by lanou3g on 15/10/15.
+//  Created by boluchuling on 15/10/15.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -10,6 +10,10 @@
 
 @interface UIImage (TransformColorAndImage)
 
+// 纯色图片
 + (UIImage *)imageFromColor:(UIColor *)color;
+
+// 缩放图片
++ (UIImage *)imageWithImageSimple:(UIImage *)image scaleToSize:(CGSize)newSize;
 
 @end

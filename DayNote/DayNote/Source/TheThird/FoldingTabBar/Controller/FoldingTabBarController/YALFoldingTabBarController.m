@@ -140,8 +140,8 @@ static YALFoldingTabBarController *YALTBC = nil;
 
 - (void)tabBarViewWillCollapse:(YALFoldingTabBar *)tabBarView {
     id<YALTabBarInteracting>viewController = [self currentInteractingViewController];
-    if ([viewController respondsToSelector:@selector(tabBarViewWillCollapse)]) {
-        [viewController tabBarViewWillCollapse];
+    if ([viewController respondsToSelector:@selector(tabBarViewWillCollapse:)]) {
+        [viewController tabBarViewWillCollapse:tabBarView];
     }
 }
 
