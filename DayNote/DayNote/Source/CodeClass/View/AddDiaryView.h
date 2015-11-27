@@ -2,7 +2,7 @@
 //  AddDiaryView.h
 //  DayNote
 //
-//  Created by boluchuling on 15/10/15.
+//  Created by boluchuling             on 15/10/15.
 //  Copyright (c) 2015年 郭兆伟. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 - (void)zoomInOrOutFont:(BOOL)isReduce;
 
 @end
+
 
 @interface AddDiaryView : UIView
 

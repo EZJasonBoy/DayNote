@@ -42,6 +42,7 @@
     self.writeDiary.moodFlat.titleLabel.text = @"平淡";
     self.writeDiary.moodSmaile.titleLabel.text = @"高兴";
     
+    
     [self setUI]; 
      self.writeDiary.myImage.image = nil;
     [self.writeDiary.toolBar setBackgroundImage:[UIImage imageFromColor:[UIColor flatBlueColor]] forToolbarPosition:UIBarPositionBottom barMetrics:UIBarMetricsDefault];
@@ -76,6 +77,8 @@
         }
         
     }
+    
+    
 }
 
 - (void)changeWeather:(NSNotification *)notification {
@@ -176,7 +179,7 @@
     
 }
 // text增加,相应变大
-- (void)textViewDidChange:(UITextView *)textView {
+- (void)textViewDidChange:(YYTextView *)textView {
     if (textView.contentSize.height >= 300) {
         NSUInteger length = textView.text.length;
         textView.selectedRange = NSMakeRange(length-2, 0);

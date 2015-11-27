@@ -99,7 +99,7 @@
         _editPage.backgroundColor = [UIColor flatWhiteColor];
         _editPage.textContainer.lineBreakMode = NSLineBreakByClipping;
         [self.backGroundView addSubview:_editPage];
-        
+
     }
     return _editPage;
 }

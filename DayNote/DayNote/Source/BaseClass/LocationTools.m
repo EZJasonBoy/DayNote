@@ -12,12 +12,10 @@ static LocationTools *tools = nil;
 @implementation LocationTools 
 
 + (instancetype)shareLocation {
-    if (tools == nil) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            tools = [[LocationTools alloc] init];
-        });
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        tools = [[LocationTools alloc] init];
+    });
     return tools;
 }
 - (BOOL)detectWhetherToSupportLocalization {
@@ -39,6 +37,9 @@ static LocationTools *tools = nil;
     }else {
         NSLog(@"不支持定位");
     }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self requestAuthorization];
+    });
     
     self.geocoder = [[CLGeocoder alloc] init];
     self.manager = [[CLLocationManager alloc] init];
@@ -48,8 +49,6 @@ static LocationTools *tools = nil;
     self.manager.distanceFilter = 1000.0f;
     
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
-   
-    [self requestAuthorization];
     
 }
 
@@ -68,6 +67,7 @@ static LocationTools *tools = nil;
 }
 
 - (void)getCityNameWithCoordinate:(CLLocationCoordinate2D)location city:(City)cityName {
+    NSLog(@"%f", location.latitude);
     CLLocation *locations = [[CLLocation alloc] initWithLatitude:location.latitude longitude:location.longitude];
     [self.geocoder reverseGeocodeLocation:locations completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
@@ -87,11 +87,15 @@ static LocationTools *tools = nil;
     CLLocation *location = [locations lastObject];
     [manager stopUpdatingHeading];
     self.location = location.coordinate;
+    NSLog(@"%f", location.coordinate.latitude);
     
     [self getCityNameWithCoordinate:location.coordinate city:^(NSString *cityName) {
         self.localCity = cityName;
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         [userDefault setObject:cityName forKey:@"local"];
+        if (cityName == nil) {// 如果解析为空
+            cityName = @"北京市";
+        }
         NSDictionary *dict = [NSDictionary dictionaryWithObject:cityName forKey:@"city"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"local" object:nil userInfo:dict];
     }];
@@ -99,6 +103,6 @@ static LocationTools *tools = nil;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    
+    NSLog(@"fails");
 }
 @end

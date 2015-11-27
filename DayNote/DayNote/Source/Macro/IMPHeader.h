@@ -46,4 +46,9 @@
 #import "Md5.h"
 #import "NSData+AES256.h"
 
+
+// 富文本
+#import "YYKit.h"
+
+
 #endif
