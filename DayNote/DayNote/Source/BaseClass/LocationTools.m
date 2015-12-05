@@ -93,6 +93,7 @@ static LocationTools *tools = nil;
         self.localCity = cityName;
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         [userDefault setObject:cityName forKey:@"local"];
+        NSLog(@"%@", cityName);
         if (cityName == nil) {// 如果解析为空
             cityName = @"北京市";
         }

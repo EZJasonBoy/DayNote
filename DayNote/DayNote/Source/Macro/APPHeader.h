@@ -42,6 +42,7 @@
 #import "RegisterViewController.h"
 #import "DetailsMoodTableViewController.h"
 #import "ServiceViewController.h"
+#import "BLCLFeedBackViewController.h"// 反馈
 
 // model
 #import "DayNote.h"
@@ -114,8 +115,8 @@
 
 
 
-
-
+#define BLCLPROPOTIONSCREENWIDTH CGRectGetWidth([UIScreen mainScreen].bounds)/375
+#define BLCLPROPOTIONSCREENHEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)/667
 
 
 

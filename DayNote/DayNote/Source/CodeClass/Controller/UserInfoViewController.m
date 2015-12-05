@@ -51,12 +51,16 @@
     [gender addSubview:secrecy];
     self.userInfo.genderText.inputView = gender;
     
+    // age ------ Datepiker
     self.userInfo.ageText.delegate = self;
-    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMaxY(self.view.frame)-BLCLPROPOTIONSCREENHEIGHT*100, CGRectGetWidth(self.view.frame), BLCLPROPOTIONSCREENHEIGHT*100)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     self.userInfo.ageText.inputView = datePicker;
     
+
+    
+    // 
     self.userInfo.SignText.delegate = self;
     self.userInfo.SignText.returnKeyType = UIReturnKeyDone;
     
@@ -71,7 +75,6 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
 }
 -(void)keyboardHide:(UITapGestureRecognizer*)tap{
-    [self.userInfo.UserNameText resignFirstResponder];
     [self.userInfo.genderText resignFirstResponder];
     [self.userInfo.ageText resignFirstResponder];
     [self.userInfo.SignText resignFirstResponder];
@@ -99,16 +102,17 @@
         self.userName = [userDefaults objectForKey:@"userName"];
         [self requestUserDataWithUserName:self.userName];
     }
+    self.userInfo.UserNameText.userInteractionEnabled = NO;
     
 }
 
 -(void)requestUserDataWithUserName:(NSString *)aName {
 
     AVQuery *query = [AVQuery queryWithClassName:@"Post"];
-    [query whereKey:@"username" equalTo:[Md5 md5:aName]];
+    [query whereKey:@"username" equalTo:aName];
     self.userInfo.UserNameText.text = self.userName;
     [query getFirstObjectInBackgroundWithBlock:^(AVObject *object, NSError *error) {
-        if (!object)
+        if (error)
         {
             NSLog(@"getFirstObject 请求失败。%@", error);
         }
@@ -121,8 +125,9 @@
             
             [object[@"attached"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
              {
+                 NSLog(@"%@", data);
+                 _userInfo.heardImg.image = [[UIImageView alloc] initWithImage:[UIImage imageWithData:data]].image;
                  [_userInfo.bgImg setImageToBlur:[UIImage imageWithData:data] blurRadius:kLBBlurredImageDefaultBlurRadius completionBlock:nil];
-                 _userInfo.heardImg.image = [UIImage imageWithData:data];
                  
              }];
         }
@@ -133,6 +138,7 @@
 -(void)selectAction:(UIButton *)sender
 {
     self.userInfo.genderText.text = sender.titleLabel.text;
+    [self.userInfo.genderText resignFirstResponder];
 }
 
 //编辑按钮
@@ -145,7 +151,7 @@
         _userInfo.genderText.userInteractionEnabled = YES;
         _userInfo.ageText.userInteractionEnabled = YES;
         _userInfo.SignText.userInteractionEnabled = YES;
-        _userInfo.UserNameText.borderStyle = UITextBorderStyleRoundedRect;
+//        _userInfo.UserNameText.borderStyle = UITextBorderStyleRoundedRect;
         _userInfo.genderText.borderStyle = UITextBorderStyleRoundedRect;
         _userInfo.ageText.borderStyle = UITextBorderStyleRoundedRect; 
         _userInfo.SignText.borderStyle = UITextBorderStyleRoundedRect;
@@ -154,15 +160,12 @@
         _userInfo.ageText.backgroundColor = [UIColor whiteColor];
         _userInfo.SignText.backgroundColor = [UIColor whiteColor];
         
-        
-        
-        
         [_userInfo.editBtn setTitle:@"保存" forState:UIControlStateNormal];
     }
     else if ( [_userInfo.editBtn.titleLabel.text isEqualToString:@"保存"])
     {
         _userInfo.UserNameText.userInteractionEnabled = NO;
-        _userInfo.UserNameText.borderStyle = UITextBorderStyleNone;
+//        _userInfo.UserNameText.borderStyle = UITextBorderStyleNone;
         _userInfo.genderText.userInteractionEnabled = NO;
         _userInfo.genderText.borderStyle = UITextBorderStyleNone;    
         _userInfo.ageText.userInteractionEnabled = NO;
@@ -173,16 +176,31 @@
         _userInfo.genderText.backgroundColor = [UIColor clearColor];
         _userInfo.ageText.backgroundColor = [UIColor clearColor];
         _userInfo.SignText.backgroundColor = [UIColor clearColor];
+        
+        AVQuery *query = [AVQuery queryWithClassName:@"Post"];
+        
+        [query whereKey:@"username" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"userName"]];
+        [query getFirstObjectInBackgroundWithBlock:^(AVObject *object, NSError *error)
+         {
+             if (error) {
+                 AVObject *post = [AVObject objectWithClassName:@"Post"];
+                 [post setObject:self.string forKey:@"userID"];
+                 [post setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"userName"]   forKey:@"username"];
+                 [post setObject:_userInfo.genderText.text  forKey:@"gender"];
+                 [post setObject:_userInfo.SignText.text forKey:@"Sign"];
+                 [post setObject:_userInfo.ageText.text forKey:@"age"];
 
-        AVObject *post = [AVObject objectWithClassName:@"Post"];
-        [post setObject:self.string forKey:@"userID"];
-        [post setObject:_userInfo.UserNameText.text   forKey:@"username"];
-        [post setObject:_userInfo.genderText.text  forKey:@"gender"];
-        [post setObject:_userInfo.SignText.text forKey:@"Sign"];
-        [post setObject:_userInfo.ageText.text forKey:@"age"];
-
-        [post saveInBackground];
-
+                 [post saveInBackground];
+             }else {
+                 AVObject *post = [AVObject objectWithoutDataWithClassName:@"Post" objectId:object[@"objectId"]];
+                 [post setObject:self.string forKey:@"userID"];
+                 [post setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"userName"]   forKey:@"username"];
+                 [post setObject:_userInfo.genderText.text  forKey:@"gender"];
+                 [post setObject:_userInfo.SignText.text forKey:@"Sign"];
+                 [post setObject:_userInfo.ageText.text forKey:@"age"];
+                 [post saveInBackground];
+             }
+         }];
         
         [_userInfo.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
     }
@@ -192,13 +210,14 @@
 {
     UIDatePicker *picker = (UIDatePicker *)sender;
     picker.maximumDate = [NSDate date];
+    NSLog(@"%@", picker.maximumDate);
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-     [formatter setDateFormat:@"yyyy 年 MM 月 dd 日"];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
     NSString *dateStr = [formatter stringFromDate:picker.date];
     self.userInfo.ageText.text = dateStr;
    
 }
-
+ 
 //拍照片
 -(void)AddBgImage
 {
@@ -288,10 +307,11 @@
         
         //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
         [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
-        [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
+        [fileManager createFileAtPath:[DocumentsPath stringByAppendingFormat:@"/%@_image.png", [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"]] contents:data attributes:nil];
         
         //得到选择后沙盒中图片的完整路径
-        _filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,@"/image.png"];
+        _filePath = [[NSString alloc]initWithFormat:@"%@/%@_image.png",DocumentsPath,[[NSUserDefaults standardUserDefaults] objectForKey:@"userName"]];
+        NSLog(@"%@", _filePath);
         [self dismissViewControllerAnimated:YES completion:nil];
         UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(62, 62, 85, 84)];
         imageview.image=image;
@@ -326,6 +346,7 @@
          }];
         if (self.userInfo.genderText.text == nil&&self.userInfo.ageText.text == nil &&self.userInfo.SignText.text == nil )
         {
+            NSLog(@"%@", self.userName);
             AVObject *post1 = [AVObject objectWithClassName:@"Post"];
             [post1 setObject:self.userName  forKey:@"username"];
             [post1 setObject:imageFile forKey:@"attached"];
@@ -335,7 +356,7 @@
         {
         AVQuery *query = [AVQuery queryWithClassName:@"Post"];
        
-        [query whereKey:@"username" equalTo:[Md5 md5:self.userName]];
+        [query whereKey:@"username" equalTo:self.userName];
         [query getFirstObjectInBackgroundWithBlock:^(AVObject *object, NSError *error)
          {
              AVObject *post = [AVObject objectWithoutDataWithClassName:@"Post" objectId:object[@"objectId"]];
@@ -350,6 +371,7 @@
 {
     
     [UIView animateWithDuration:.15 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        
         self.userInfo.UserNameText.hidden = YES;
         self.userInfo.genderText.hidden = YES;
         self.userInfo.ageText.hidden = YES;
@@ -380,7 +402,6 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.userInfo.UserNameText resignFirstResponder];
     [self.userInfo.genderText resignFirstResponder];
     [self.userInfo.ageText resignFirstResponder];
     [self.userInfo.SignText resignFirstResponder];
@@ -419,6 +440,11 @@
         
     }];
 
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

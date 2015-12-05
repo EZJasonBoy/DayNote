@@ -65,6 +65,10 @@
     [self addSubview:_AgainPwdNull];
     
     
+    
+    
+    
+    
     _MailLable = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.AgainPwdLable.frame), CGRectGetMaxY(self.AgainPwdLable.frame) + [UIScreen mainScreen].bounds.size.height*40/667, CGRectGetWidth(self.AgainPwdLable.frame), CGRectGetHeight(self.AgainPwdLable.frame))];
     [self addSubview:_MailLable];
     

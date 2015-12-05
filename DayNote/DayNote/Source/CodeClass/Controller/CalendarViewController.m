@@ -108,11 +108,12 @@
         });
         return; 
     }
+    
     AddDiaryViewController *addDiary = [[AddDiaryViewController alloc] init];
     addDiary.type = ADDTYPEWriteUp;// 选择补写
     addDiary.contentDate = self.selectDate;
     [self presentViewController:addDiary animated:YES completion:nil];
-    [self.navigationController setHidesBottomBarWhenPushed:NO];
+//    [self.navigationController setHidesBottomBarWhenPushed:NO];
 }
 
 @end

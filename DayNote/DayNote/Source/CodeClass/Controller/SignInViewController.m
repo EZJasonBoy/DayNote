@@ -62,7 +62,7 @@
 - (void)signAction:(UIButton *)sender
 {
     
-    [AVUser logInWithUsernameInBackground:[Md5 md5:self.signView.userTextField.text] password:[Md5 md5:self.signView.pwdTextField.text] block:^(AVUser *user, NSError *error) {
+    [AVUser logInWithUsernameInBackground:self.signView.userTextField.text password:self.signView.pwdTextField.text block:^(AVUser *user, NSError *error) {
         if (user != nil) {
             
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"😄😄😄" message:@"恭喜登录成功！" preferredStyle:UIAlertControllerStyleAlert];

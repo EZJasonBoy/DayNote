@@ -93,7 +93,6 @@
         _editPage.scrollEnabled = YES;
         _editPage.keyboardType = UIKeyboardTypeDefault;
         _editPage.textAlignment = NSTextAlignmentLeft;
-        _editPage.font = [UIFont fontWithName:@"Melno" size:30];
         _editPage.dataDetectorTypes = UIDataDetectorTypeAll;
         _editPage.font = [UIFont fontWithName:@"Menlo" size:14];
         _editPage.backgroundColor = [UIColor flatWhiteColor];

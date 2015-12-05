@@ -47,7 +47,7 @@
     self.diaryDetails.backScrollView.showsVerticalScrollIndicator = NO;
     
     self.navigationItem.title = [[ConversionWithDate shareDateConversion] getStringWithDate:_myDiary.contentDate type:GZWDateFormatTypeWord];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"/Users/lanou3g/Downloads/Left_Arrow_31.015384615385px_1190911_easyicon.net.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backToMain:)];
+    
     self.diaryDetails.weatherImage.image = [UIImage imageNamed:self.myDiary.weatherImage];
     
     self.diaryDetails.moodImage.image = [UIImage imageNamed:_myDiary.mood];
@@ -63,6 +63,13 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStyleDone target:self action:@selector(shareAction:)];
 }
 
+/*!
+ *  @brief  分享日记
+ *
+ *  @param sender UIBarButtonItem
+ *
+ *  @since 1.1.2
+ */
 -(void)shareAction:(UIBarButtonItem *)sender
 {
     if (_myTag == 1) {
@@ -70,6 +77,17 @@
         [self.alert show];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+            self.alert = nil;
+        });
+        return;
+    }
+    
+    if ([self.myDiary.diaryBody isEqualToString:@""]) {
+        self.alert = [[UIAlertView alloc] initWithTitle:@"不能分享空日记哦!赶紧回去编写吧." message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+        [self.alert show];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+            self.alert = nil;
         });
         return;
     }
@@ -81,10 +99,17 @@
     _myTag = 1;
 }
 
+/*!
+ *  @brief  分享成功
+ *
+ *  @param sender 城市名称
+ *
+ *  @since 1.1.2
+ */
 - (void)requestSuccess:(NSString *)sender {
 
     NSString *str1 = sender;
-    NSString *str2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"local"];
+    NSString *str2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"local"];// 本地
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:_myDiary.contentDate,@"contentDate", _myDiary.weather,@"weather", _myDiary.mood,@"mood", _myDiary.diaryBody,@"diaryBody", [NSDate date],@"shareDate",nil];
     if (str1 == nil) {
         str1 = @"未知";
@@ -128,10 +153,10 @@
 //- (void)dismissAlertView:(NSTimer*)timer {
 //    [self.alert dismissWithClickedButtonIndex:0 animated:YES];
 //}
-// 返回上一页面
-- (void)backToMain:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//// 返回上一页面
+//- (void)backToMain:(UIBarButtonItem *)sender {
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 // 编辑日记
 - (void)writeDiary {
     AddDiaryViewController *add = [[AddDiaryViewController alloc] init];

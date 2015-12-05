@@ -93,9 +93,10 @@
     [self p_setNavigationBar];
     
     // leancloud
-    [AVOSCloud setApplicationId:@"qY4QJscjHuPYu6MBom3XBY62"
-                      clientKey:@"FWrcFjso6qUbqbiwerBRkn5l"];
-//    [AVOSCloud setApplicationId:@"E7cnkG3jvtaopu6urja6Edqq" clientKey:@"E1sCWWCXzBkOLFNAXt6tputK"];
+//    [AVOSCloud setApplicationId:@"qY4QJscjHuPYu6MBom3XBY62"
+//                      clientKey:@"FWrcFjso6qUbqbiwerBRkn5l"];
+    [AVOSCloud setApplicationId:@"kmQcXyTaVazzVOtPRK0SO1AH"
+                      clientKey:@"DuSjmTooeeBB0MQJBVeWuG8U"];
     // 讯飞
     NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"56250133"]; 
     [IFlySpeechUtility createUtility:initString];

@@ -16,7 +16,7 @@
 
 @property(nonatomic,strong)UIScrollView *infoScroll;
 @property(nonatomic,strong)UILabel *UserNameLable;
-@property(nonatomic,strong)UITextField *UserNameText;
+@property(nonatomic,strong)UILabel *UserNameText;
 @property(nonatomic,strong)UILabel *genderLable;
 @property(nonatomic,strong)UITextField *genderText;
 @property(nonatomic,strong)UILabel *ageLable;

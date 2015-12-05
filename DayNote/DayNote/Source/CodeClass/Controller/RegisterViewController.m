@@ -177,8 +177,8 @@
             if ((![_registerView.UserNameText.text isEqualToString:@""]) &&[_registerView.PwdText.text isEqualToString:_registerView.AgainPwdText.text])
             {
                 AVUser *user = [AVUser user];
-                user.username = [Md5 md5:_registerView.UserNameText.text];
-                user.password = [Md5 md5:_registerView.PwdText.text];
+                user.username = _registerView.UserNameText.text;
+                user.password = _registerView.PwdText.text;
                 user.email = _registerView.MailText.text;
                 
                 //注册成功
@@ -193,14 +193,15 @@
                     {
                         //判断用户名是否存在
                         AVQuery *query = [AVUser query];
-                        [query whereKey:@"username" equalTo:[Md5 md5:_registerView.UserNameText.text]];
+                        [query whereKey:@"username" equalTo:_registerView.UserNameText.text];
                         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                             if (error == nil)
                             {
                             }
                             else
                             {
-                                self.alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户名或密码已存在!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                                NSLog(@"%@-----%@", error.userInfo, error.domain);
+                                self.alert = [[UIAlertView alloc]initWithTitle:@"快换个新颖的名字吧!!!" message:@"昵称或邮箱已经被抢占了!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                                 [self.alert show];
                             }
                         }];

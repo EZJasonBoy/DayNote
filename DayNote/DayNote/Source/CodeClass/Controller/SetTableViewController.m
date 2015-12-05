@@ -35,7 +35,7 @@ static SetTableViewController *tools = nil;
     self.navigationItem.title = @"设置";
     [self.tableView registerClass:[SetTableViewCell class] forCellReuseIdentifier:@"cell"];
     self.arr = [[NSMutableArray alloc]init];
-    self.arr = @[@"皮肤设置",@"同步",@"清除缓存",@"关于我们"].mutableCopy;
+    self.arr = @[@"皮肤设置",@"同步",@"清除缓存",@"意见反馈",@"关于我们"].mutableCopy;
     [TSMessage setDelegate:self];
    
 
@@ -119,7 +119,7 @@ static SetTableViewController *tools = nil;
     if (indexPath.section == 2) {
         NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
         NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
-        self.label = [[UILabel alloc]initWithFrame:CGRectMake(280, 5, 70, 30)];
+        self.label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetWidth(cell.contentView.frame)-BLCLPROPOTIONSCREENWIDTH*20-70, BLCLPROPOTIONSCREENHEIGHT*7, 70, BLCLPROPOTIONSCREENHEIGHT*30)];
         [cell addSubview:_label];
         self.label.text = [NSString stringWithFormat:@"文件: %ld",(unsigned long)files.count];
     }
@@ -152,6 +152,9 @@ static SetTableViewController *tools = nil;
             [self p_setAlert];
             break;
         case 3:
+            [self feedback];
+            break;
+        case 4:
             [self p_about];
             break;
         default:
@@ -344,6 +347,15 @@ static SetTableViewController *tools = nil;
 - (void)clearCacheSuccess {
     
 }
+/*!
+ *  @brief  意见反馈
+ *
+ *  @since 1.1.2
+ */
+- (void)feedback {
+    BLCLFeedBackViewController *feed = [[BLCLFeedBackViewController alloc] init];
+    [self.navigationController pushViewController:feed animated:YES];
+}
 
 #pragma mark  关于我们  demo显示
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
@@ -353,7 +365,11 @@ static SetTableViewController *tools = nil;
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
     NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"About" attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:24], NSParagraphStyleAttributeName : paragraphStyle}];
-    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"1.0.0" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18], NSParagraphStyleAttributeName : paragraphStyle}];
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    CFShow((__bridge CFTypeRef)(infoDictionary));
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:app_Version attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18], NSParagraphStyleAttributeName : paragraphStyle}];
     UIImage *icon = [UIImage imageNamed:@"悠悠记"];
     NSAttributedString *lineTwo = [[NSAttributedString alloc] initWithString:@"---悠悠记团队" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18], NSForegroundColorAttributeName : [UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0], NSParagraphStyleAttributeName : paragraphStyle}];
     

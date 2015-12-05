@@ -262,6 +262,7 @@
 		C2E3371E1BE8EDE800C10B23 /* Md5.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E3371A1BE8EDE800C10B23 /* Md5.m */; };
 		C2E3371F1BE8EDE800C10B23 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E3371C1BE8EDE800C10B23 /* NSData+AES256.m */; };
 		C2E3EF831BD1EB45006A9FCD /* ConversionWithDate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E3EF821BD1EB45006A9FCD /* ConversionWithDate.m */; };
+		C2E89CAD1C0C39D100C3A758 /* BLCLFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E89CAC1C0C39D100C3A758 /* BLCLFeedBackViewController.m */; };
 		C2F3771D1BD47B4900F033D0 /* DiaryDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F3771C1BD47B4900F033D0 /* DiaryDetailsViewController.m */; };
 		C2F377201BD47B6700F033D0 /* DiaryDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F3771F1BD47B6700F033D0 /* DiaryDetailsView.m */; };
 		C2F377241BD4924A00F033D0 /* 半圆白.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F377231BD4924A00F033D0 /* 半圆白.png */; };
@@ -771,6 +772,8 @@
 		C2E3371C1BE8EDE800C10B23 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
 		C2E3EF811BD1EB45006A9FCD /* ConversionWithDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionWithDate.h; sourceTree = "<group>"; };
 		C2E3EF821BD1EB45006A9FCD /* ConversionWithDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionWithDate.m; sourceTree = "<group>"; };
+		C2E89CAB1C0C39D100C3A758 /* BLCLFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCLFeedBackViewController.h; sourceTree = "<group>"; };
+		C2E89CAC1C0C39D100C3A758 /* BLCLFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCLFeedBackViewController.m; sourceTree = "<group>"; };
 		C2F3771B1BD47B4900F033D0 /* DiaryDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryDetailsViewController.h; sourceTree = "<group>"; };
 		C2F3771C1BD47B4900F033D0 /* DiaryDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryDetailsViewController.m; sourceTree = "<group>"; };
 		C2F3771E1BD47B6700F033D0 /* DiaryDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryDetailsView.h; sourceTree = "<group>"; };
@@ -1034,6 +1037,8 @@
 				C22AD8281BD9189F00AE4464 /* ShareTableViewController.m */,
 				C24F495C1BE38C2600AC1280 /* ServiceViewController.h */,
 				C24F495D1BE38C2600AC1280 /* ServiceViewController.m */,
+				C2E89CAB1C0C39D100C3A758 /* BLCLFeedBackViewController.h */,
+				C2E89CAC1C0C39D100C3A758 /* BLCLFeedBackViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2054,6 +2059,7 @@
 					};
 					C21C85EA1BCF4838004C78D2 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = JHZ8JWTCG7;
 						TestTargetID = C21C85D11BCF4838004C78D2;
 					};
 				};
@@ -2370,6 +2376,7 @@
 				C2DF4A861BDDBDDB00DACD24 /* ShareTableViewCell.m in Sources */,
 				C2C536841BD9CD5D00EFE9A2 /* CalendarView.m in Sources */,
 				C2F377291BD4BDAF00F033D0 /* RequestWeatherTools.m in Sources */,
+				C2E89CAD1C0C39D100C3A758 /* BLCLFeedBackViewController.m in Sources */,
 				C2E3371E1BE8EDE800C10B23 /* Md5.m in Sources */,
 				C2BDE8C91BE1B9A500C2F6E7 /* UIScrollView+MJRefresh.m in Sources */,
 				C287AFD11BDB3B4900A1A29E /* UserInfoView.m in Sources */,
@@ -2459,10 +2466,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "73d07220-43a7-4b51-8edd-8b468158cafb";
+				PROVISIONING_PROFILE = "0136aa9d-2cea-4ab6-8a1e-8b7166388bd2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2497,9 +2504,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "73d07220-43a7-4b51-8edd-8b468158cafb";
+				PROVISIONING_PROFILE = "0136aa9d-2cea-4ab6-8a1e-8b7166388bd2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2525,7 +2532,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = DayNote/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -2533,7 +2540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.GZW.YouYouDayNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "73d07220-43a7-4b51-8edd-8b468158cafb";
+				PROVISIONING_PROFILE = "0136aa9d-2cea-4ab6-8a1e-8b7166388bd2";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2558,7 +2565,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = DayNote/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -2566,7 +2573,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.GZW.YouYouDayNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "73d07220-43a7-4b51-8edd-8b468158cafb";
+				PROVISIONING_PROFILE = "0136aa9d-2cea-4ab6-8a1e-8b7166388bd2";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -2575,6 +2582,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Xu Yongchao (2S2G9JCVG6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Xu Yongchao (2S2G9JCVG6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2586,6 +2595,7 @@
 				INFOPLIST_FILE = DayNoteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0136aa9d-2cea-4ab6-8a1e-8b7166388bd2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DayNote.app/DayNote";
 			};
 			name = Debug;
@@ -2594,6 +2604,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Xu Yongchao (2S2G9JCVG6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Xu Yongchao (2S2G9JCVG6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2601,6 +2613,7 @@
 				INFOPLIST_FILE = DayNoteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0136aa9d-2cea-4ab6-8a1e-8b7166388bd2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DayNote.app/DayNote";
 			};
 			name = Release;

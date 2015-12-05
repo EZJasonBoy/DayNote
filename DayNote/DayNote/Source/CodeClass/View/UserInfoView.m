@@ -61,9 +61,9 @@
     
    
 
-     _UserNameText = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.UserNameLable.frame) + 10, CGRectGetMinY(self.UserNameLable.frame), CGRectGetWidth([[UIScreen mainScreen] bounds]) - CGRectGetWidth(self.UserNameLable.frame) - 100, CGRectGetHeight(self.UserNameLable.frame))];
-    _UserNameText.borderStyle = UITextBorderStyleRoundedRect;
-    _UserNameText.placeholder = @"起个昵称吧!";
+     _UserNameText = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.UserNameLable.frame) + 10, CGRectGetMinY(self.UserNameLable.frame), CGRectGetWidth([[UIScreen mainScreen] bounds]) - CGRectGetWidth(self.UserNameLable.frame) - 100, CGRectGetHeight(self.UserNameLable.frame))];
+//    _UserNameText.borderStyle = UITextBorderStyleRoundedRect;
+//    _UserNameText.placeholder = @"起个昵称吧!";
     _UserNameText.tag = 11101110;
     [self.infoScroll addSubview:_UserNameText];
 
@@ -105,7 +105,7 @@
     
     
     _UserNameText.userInteractionEnabled = NO;
-    _UserNameText.borderStyle = UITextBorderStyleNone;
+//    _UserNameText.borderStyle = UITextBorderStyleNone;
     _genderText.userInteractionEnabled = NO;
     _genderText.borderStyle = UITextBorderStyleNone;    
     _ageText.userInteractionEnabled = NO;

@@ -12,6 +12,15 @@ typedef void(^weather)(NSDictionary *dict);
 @interface RequestWeatherTools : NSObject
 
 + (instancetype)shareRequestWeather;
+
+/*!
+ *  @brief  根据城市获取天气
+ *
+ *  @param aName    城市名称
+ *  @param aWeather Block返回天气数据
+ *
+ *  @since 1.0
+ */
 - (void)getWeatherDetailsWithCity:(NSString *)aName Weather:(weather)aWeather;
 
 @end

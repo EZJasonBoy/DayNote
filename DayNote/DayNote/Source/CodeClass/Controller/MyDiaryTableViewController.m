@@ -180,10 +180,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.navigationController setNavigationBarHidden:NO];
 
     DiaryDetailsViewController *DDVC = [[DiaryDetailsViewController alloc] init];
-    [DDVC.navigationController setNavigationBarHidden:NO];
     DDVC.diaryData = self.tempArr[indexPath.section];
     [self.navigationController pushViewController:DDVC animated:YES];
     
